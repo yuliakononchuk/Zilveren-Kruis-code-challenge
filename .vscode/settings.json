@@ -1,0 +1,15 @@
+{​​
+    "eslint.validate": [
+        "typescript",
+        "typescriptreact",
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ],
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "vetur.format.enable": false,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false
+}
