@@ -11,5 +11,6 @@
     "vetur.format.enable": false,
     "css.validate": false,
     "less.validate": false,
-    "scss.validate": false
+    "scss.validate": false,
+    "editor.formatOnSave": true
 }
