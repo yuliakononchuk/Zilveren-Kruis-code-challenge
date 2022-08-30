@@ -54,26 +54,11 @@
                             </label>
                             <div class="form-row">
                                 <radio-tile
-                                    id="radio-insurance-basis-budget"
-                                    title="Basis Budget"
-                                    price="€ 1.393,26 per jaar"
-                                    name="radio-insurance"
-                                    @radioTileChange="() => {}"
-                                />
-                                <radio-tile
-                                    id="radio-insurance-basis-zeker"
-                                    title="Basis Zeker"
-                                    price="€ 1.483,54 per jaar"
-                                    :selected="true"
-                                    badge_title="Meest gekozen"
-                                    name="radio-insurance"
-                                    @radioTileChange="() => {}"
-                                />
-
-                                <radio-tile
-                                    id="radio-insurance-basis-exclusief-(restitutie)"
-                                    title="Basis Exclusief (Restitutie)"
-                                    price="€ 1.624,62 per jaar"
+                                    v-for="option in options.basisVerzekering"
+                                    :key="option.id"
+                                    :id="option.id"
+                                    :title="option.title"
+                                    :price="`${option.pricePerYear} per jaar`"
                                     name="radio-insurance"
                                     @radioTileChange="() => {}"
                                 />
