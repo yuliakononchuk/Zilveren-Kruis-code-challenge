@@ -18,7 +18,7 @@
                         :title="option.title"
                         :price="`${option.pricePerYear} per jaar`"
                         name="radio-insurance"
-                        @radioTileChange="() => {}"
+                        @radioTileChange="updateBasisVerzekering"
                     />
                 </div>
             </div>
@@ -27,12 +27,21 @@
             <simple-select
                 title="Kies je betaaltermijn"
                 :options="options.betaalTermijn"
+                @selectChange="updateBetaalTermijn"
+                :has-placeholder="false"
             />
         </form-group>
         <form-group title="Eigen risico">
             <simple-select
+                :disabled="basisVerzekeringNotSelected"
+                :placeholder="
+                    basisVerzekeringNotSelected
+                        ? 'Kies eerst uw basisverzekering'
+                        : 'Er is nog niets geselecteerd'
+                "
                 title="Kies de hoogste van het eigen risico"
                 :options="options.eigenRisico"
+                @selectChange="updateEigenRisico"
             />
         </form-group>
         <form-group
@@ -44,13 +53,17 @@
         >
             <simple-select
                 title="Kies uw aanvullende verzekering"
-                :options="options.aanvullendVerzekering"
+                :options="options.aanvullendeVerzekering"
+                @selectChange="updateAanvullendeVerzekering"
+                placeholder="Geen aanvullende verzekering geselecteerd"
             />
         </form-group>
         <form-group>
             <simple-select
                 title="Kies uw tandartsverzekering"
                 :options="options.tandartsVerzekering"
+                @selectChange="updateTandartsVerzekering"
+                placeholder="Geen tandartsverzekering geselecteerd"
             />
         </form-group>
         <router-link to="/controle"> Ge verder naar Controle </router-link>
@@ -62,6 +75,7 @@ import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioTile from '@/components/reusable/RadioTile.vue';
 import options from '@/constants/options.js';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
     name: 'InsuranceDetails',
@@ -73,7 +87,17 @@ export default {
     computed: {
         options() {
             return options;
-        }
+        },
+        ...mapGetters(['basisVerzekeringNotSelected'])
+    },
+    methods: {
+        ...mapMutations([
+            'updateBasisVerzekering',
+            'updateBetaalTermijn',
+            'updateEigenRisico',
+            'updateAanvullendeVerzekering',
+            'updateTandartsVerzekering'
+        ])
     }
 };
 </script>

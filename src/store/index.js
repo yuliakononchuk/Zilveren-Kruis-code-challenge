@@ -14,10 +14,18 @@ export default new Vuex.Store({
         achternaam: '',
         geslacht: '',
         geboortedatum: '',
-        bsn: ''
+        bsn: '',
+        basisVerzekering: '',
+        betaalTermijn: '',
+        eigenRisico: '',
+        aanvullendeVerzekering: '',
+        tandartsVerzekering: ''
     },
 
     getters: {
+        basisVerzekeringNotSelected(state) {
+            return state.basisVerzekering.length === 0;
+        },
         naamFormat(state) {
             if (!state.naam) return '';
             return formatFullName(
@@ -52,8 +60,23 @@ export default new Vuex.Store({
             state.geslacht = value;
         },
         updateGeboortedatum(state, value) {
-            console.warn(state)
             state.geboortedatum = value;
+        },
+        updateBasisVerzekering(state, value) {
+            state.basisVerzekering = value;
+        },
+        updateBetaalTermijn(state, value) {
+            state.betaalTermijn = value;
+        },
+        updateEigenRisico(state, value) {
+            state.eigenRisico = value;
+        },
+        updateAanvullendeVerzekering(state, value) {
+            state.aanvullendeVerzekering = value;
+        },
+        updateTandartsVerzekering(state, value) {
+            console.warn(state);
+            state.tandartsVerzekering = value;
         }
     }
 });

@@ -13,7 +13,6 @@ export default {
         {
             id: '1',
             title: '€ 385 - verplicht eigen risico',
-            selected: true
         },
         {
             id: '2',
@@ -43,12 +42,7 @@ export default {
             pricePerYear: '€ 1.624,62'
         }
     ],
-    aanvullendVerzekering: [
-        {
-            id: '0',
-            title: 'Geen aanvullende verzekering geselecteerd',
-            selected: true
-        },
+    aanvullendeVerzekering: [
         {
             id: '1',
             title: 'Aanvullend 1 - € 21,38 per jaar'
@@ -67,11 +61,6 @@ export default {
         }
     ],
     tandartsVerzekering: [
-        {
-            id: '0',
-            title: 'Geen tandartsverzekering geselecteerd',
-            selected: true
-        },
         {
             id: '1',
             title: 'Tand 1 - € 80,28 per jaar'

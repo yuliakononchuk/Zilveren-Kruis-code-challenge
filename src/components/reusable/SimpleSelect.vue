@@ -4,7 +4,11 @@
             {{ title }}
         </label>
         <div class="input__group">
-            <select class="form-control" @change="handleChange">
+            <select
+                :disabled="disabled"
+                class="form-control"
+                @change="handleChange"
+            >
                 <select-option
                     v-if="placeholder.length"
                     value=""
@@ -44,7 +48,14 @@ export default {
         },
         placeholder: {
             type: String,
-            default: ''
+            default: 'Er is nog niets geselecteerd'
+        },
+        hasPlaceholder: {
+            default: true
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
