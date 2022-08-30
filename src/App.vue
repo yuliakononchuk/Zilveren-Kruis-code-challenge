@@ -8,8 +8,7 @@
                     <h1>Aanmelden</h1>
 
                     <h2>Gegevens</h2>
-                    <div class="form-group">
-                        <h3>Reden van aanmelding</h3>
+                    <form-group title="Reden van aanmelding">
                         <simple-select
                             title="Wat is de reden van uw aanvraag?"
                             placeholder="Er is nog niets geselecteerd"
@@ -24,10 +23,8 @@
                                 }
                             ]"
                         />
-                    </div>
-                    <div class="form-group">
-                        <h3>Persoonlijke gegevens</h3>
-
+                    </form-group>
+                    <form-group title="Persoonlijke gegevens">
                         <text-field title="Naam" />
                         <text-field title="Tussenvoegsels" />
                         <text-field title="Achternaam" />
@@ -88,17 +85,16 @@
                             error-message="Helaas is het ingevoerde burgerservicenummer niet geldig. Probeer het opnieuw."
                             :is-valid="true"
                         />
-                    </div>
+                    </form-group>
 
                     <h2 class="mt-5">Verzekering</h2>
-                    <div class="form-group">
-                        <h3>Basisverzekering</h3>
-                        <p>
-                            In Nederland is de basisverzekering verplicht.
+                    <form-group
+                        title="Basisverzekering"
+                        subtitle="In Nederland is de basisverzekering verplicht.
                             Iedereen wordt voor de basisverzekering
                             geaccepteerd. De overheid bepaalt welke zorg hierin
-                            zit en dit is dus bij elke verzekeraar hetzelfde.
-                        </p>
+                            zit en dit is dus bij elke verzekeraar hetzelfde."
+                    >
                         <div class="input__group">
                             <label class="input__title">
                                 Kies uw basisverzekering
@@ -181,8 +177,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </form-group>
+                    <form-group>
                         <simple-select
                             title="Kies je betaaltermijn"
                             :options="[
@@ -195,9 +191,8 @@
                                 }
                             ]"
                         />
-                    </div>
-                    <div class="form-group">
-                        <h3>Eigen risico</h3>
+                    </form-group>
+                    <form-group title="Eigen risico">
                         <simple-select
                             title="Kies de hoogste van het eigen risico"
                             :options="[
@@ -212,15 +207,15 @@
                                 }
                             ]"
                         />
-                    </div>
-                    <div class="form-group">
-                        <h3>Aanvullende verzekering</h3>
-                        <p>
-                            Onze aanvullende verzekeringen kennen ruim 100
-                            verschillende vergoedingen. De hoogte van de
-                            vergoeding verschilt per pakket.hoogte van de
-                            vergoeding verschilt per pakket
-                        </p>
+                    </form-group>
+                    <form-group
+                        title="Aanvullende verzekering"
+                        subtitle="Onze aanvullende verzekeringen kennen ruim 100
+                verschillende vergoedingen. De hoogte van de
+                vergoeding verschilt per pakket"
+                    >
+                        >
+
                         <simple-select
                             title="Kies uw aanvullende verzekering"
                             :options="[
@@ -247,8 +242,8 @@
                                 }
                             ]"
                         />
-                    </div>
-                    <div class="form-group">
+                    </form-group>
+                    <form-group>
                         <simple-select
                             title="Kies uw tandartsverzekering"
                             :options="[
@@ -271,18 +266,12 @@
                                 }
                             ]"
                         />
-                    </div>
+                    </form-group>
 
                     <h2 class="mt-5">Controleren</h2>
-                    <div class="form-group">
-                        <h3>Gekozen pakket</h3>
-                    </div>
-                    <div class="form-group">
-                        <h3>Totaalpremie</h3>
-                    </div>
-                    <div class="form-group">
-                        <h3>Adres en contactgegevens</h3>
-                    </div>
+                    <form-group title="Gekozen pakket"> </form-group>
+                    <form-group title="Totaalpremie"> </form-group>
+                    <form-group title="Adres en contactgegevens"> </form-group>
                 </div>
                 <div class="col-4">
                     <div class="card card--filled-secondary h-auto">
@@ -331,6 +320,7 @@ import TheHeader from '@/components/single_instance/TheHeader.vue';
 import TheFooter from '@/components/single_instance/TheFooter.vue';
 import TextField from '@/components/reusable/TextField.vue';
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
+import FormGroup from '@/components/reusable/FormGroup.vue';
 
 export default {
     name: 'App',
@@ -338,7 +328,8 @@ export default {
         TheHeader,
         TheFooter,
         TextField,
-        SimpleSelect
+        SimpleSelect,
+        FormGroup
     }
 };
 </script>
