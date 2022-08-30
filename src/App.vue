@@ -30,35 +30,11 @@
                     </div>
                     <div class="form-group">
                         <h3>Persoonlijke gegevens</h3>
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">Naam</label>
-                                <input
-                                    class="input__field form-control"
-                                    type="text"
-                                />
-                            </div>
-                        </div>
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Tussenvoegsels
-                                </label>
-                                <input
-                                    class="input__field form-control"
-                                    type="text"
-                                />
-                            </div>
-                        </div>
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">Achternaam</label>
-                                <input
-                                    class="input__field form-control"
-                                    type="text"
-                                />
-                            </div>
-                        </div>
+
+                        <text-field title="Naam" />
+                        <text-field title="Tussenvoegsels" />
+                        <text-field title="Achternaam" />
+
                         <div class="form-input my-4">
                             <div class="input__group">
                                 <label class="input__title">Geslacht</label>
@@ -98,6 +74,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-input my-4">
                             <div class="input__group">
                                 <label class="input__title">
@@ -109,27 +86,11 @@
                                 />
                             </div>
                         </div>
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Burgerservicenummer
-                                </label>
-                                <input
-                                    class="input__field form-control is-invalid"
-                                    type="text"
-                                />
-                            </div>
-                            <div
-                                class="input__feedback invalid-feedback mt-1"
-                                aria-live="polite"
-                            >
-                                <span
-                                    >Helaas is het ingevoerde
-                                    burgerservicenummer niet geldig. Probeer het
-                                    opnieuw.</span
-                                >
-                            </div>
-                        </div>
+                        <text-field
+                            title="Burgerservicenummer"
+                            error-message="Helaas is het ingevoerde burgerservicenummer niet geldig. Probeer het opnieuw."
+                            :is-valid="true"
+                        />
                     </div>
 
                     <h2 class="mt-5">Verzekering</h2>
@@ -364,12 +325,14 @@
 <script>
 import TheHeader from '@/components/single_instance/TheHeader.vue';
 import TheFooter from '@/components/single_instance/TheFooter.vue';
+import TextField from '@/components/reusable/TextField.vue';
 
 export default {
     name: 'App',
     components: {
         TheHeader,
-        TheFooter
+        TheFooter,
+        TextField
     }
 };
 </script>
