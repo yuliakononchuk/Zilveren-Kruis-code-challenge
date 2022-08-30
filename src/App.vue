@@ -10,23 +10,20 @@
                     <h2>Gegevens</h2>
                     <div class="form-group">
                         <h3>Reden van aanmelding</h3>
-                        <div class="form-input my-4">
-                            <label id="aanmeldreden-label" class="input__title">
-                                Wat is de reden van uw aanvraag?
-                            </label>
-                            <div class="input__group">
-                                <select class="form-control">
-                                    <option>
-                                        Nieuwe werkgever met collectiviteit bij
-                                        Zilveren Kruis
-                                    </option>
-                                    <option selected>
-                                        Overstappen per 1-1-2023 naar Zilveren
-                                        Kruis
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        <simple-select
+                            title="Wat is de reden van uw aanvraag?"
+                            placeholder="Er is nog niets geselecteerd"
+                            :options="[
+                                {
+                                    id: 'nieuw',
+                                    title: 'Nieuwe werkgever met collectiviteit bij Zilveren Kruis'
+                                },
+                                {
+                                    id: 'overstappen',
+                                    title: 'Overstappen per 1-1-2023 naar Zilveren Kruis'
+                                }
+                            ]"
+                        />
                     </div>
                     <div class="form-group">
                         <h3>Persoonlijke gegevens</h3>
@@ -186,36 +183,35 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Kies je betaaltermijn
-                                </label>
-                                <select class="form-control">
-                                    <option>per maand</option>
-                                    <option>per kwartaal</option>
-                                    <option selected>per jaar</option>
-                                </select>
-                            </div>
-                        </div>
+                        <simple-select
+                            title="Kies je betaaltermijn"
+                            :options="[
+                                { id: 'maand', title: 'per maand' },
+                                { id: 'kwartaal', title: 'per kwartaal' },
+                                {
+                                    id: 'jaar',
+                                    title: 'per jaar',
+                                    selected: true
+                                }
+                            ]"
+                        />
                     </div>
                     <div class="form-group">
                         <h3>Eigen risico</h3>
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Kies de hoogste van het eigen risico
-                                </label>
-                                <select class="form-control">
-                                    <option>
-                                        € 385 - verplicht eigen risico
-                                    </option>
-                                    <option>
-                                        € 885 - korting van € 22 per jaar
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        <simple-select
+                            title="Kies de hoogste van het eigen risico"
+                            :options="[
+                                {
+                                    id: '1',
+                                    title: '€ 385 - verplicht eigen risico',
+                                    selected: true
+                                },
+                                {
+                                    id: '2',
+                                    title: '€ 885 - korting van € 22 per jaar'
+                                }
+                            ]"
+                        />
                     </div>
                     <div class="form-group">
                         <h3>Aanvullende verzekering</h3>
@@ -225,48 +221,56 @@
                             vergoeding verschilt per pakket.hoogte van de
                             vergoeding verschilt per pakket
                         </p>
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Kies uw aanvullende verzekering
-                                </label>
-                                <select class="form-control">
-                                    <option selected>
-                                        Geen aanvullende verzekering
-                                        geselecteerd
-                                    </option>
-                                    <option>
-                                        Aanvullend 1 - € 21,38 per jaar
-                                    </option>
-                                    <option>
-                                        Aanvullend 2 - € 85,06 per jaar
-                                    </option>
-                                    <option>
-                                        Aanvullend 3 - € 198,63 per jaar
-                                    </option>
-                                    <option>
-                                        Aanvullend 4 - € 359,73 per jaar
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        <simple-select
+                            title="Kies uw aanvullende verzekering"
+                            :options="[
+                                {
+                                    id: '0',
+                                    title: 'Geen aanvullende verzekering geselecteerd',
+                                    selected: true
+                                },
+                                {
+                                    id: '1',
+                                    title: 'Aanvullend 1 - € 21,38 per jaar'
+                                },
+                                {
+                                    id: '2',
+                                    title: 'Aanvullend 2 - € 85,06 per jaar'
+                                },
+                                {
+                                    id: '3',
+                                    title: 'Aanvullend 3 - € 198,63 per jaar'
+                                },
+                                {
+                                    id: '4',
+                                    title: 'Aanvullend 4 - € 359,73 per jaar'
+                                }
+                            ]"
+                        />
                     </div>
                     <div class="form-group">
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Kies uw tandartsverzekering
-                                </label>
-                                <select class="form-control">
-                                    <option selected>
-                                        Geen tandartsverzekering geselecteerd
-                                    </option>
-                                    <option>Tand 1 - € 80,28 per jaar</option>
-                                    <option>Tand 2 - € 221,65 per jaar</option>
-                                    <option>Tand 3 - € 449,36 per jaar</option>
-                                </select>
-                            </div>
-                        </div>
+                        <simple-select
+                            title="Kies uw tandartsverzekering"
+                            :options="[
+                                {
+                                    id: '0',
+                                    title: 'Geen tandartsverzekering geselecteerd',
+                                    selected: true
+                                },
+                                {
+                                    id: '1',
+                                    title: 'Tand 1 - € 80,28 per jaar'
+                                },
+                                {
+                                    id: '2',
+                                    title: 'Tand 2 - € 221,65 per jaar'
+                                },
+                                {
+                                    id: '3',
+                                    title: 'Tand 3 - € 449,36 per jaar'
+                                }
+                            ]"
+                        />
                     </div>
 
                     <h2 class="mt-5">Controleren</h2>
@@ -326,13 +330,15 @@
 import TheHeader from '@/components/single_instance/TheHeader.vue';
 import TheFooter from '@/components/single_instance/TheFooter.vue';
 import TextField from '@/components/reusable/TextField.vue';
+import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 
 export default {
     name: 'App',
     components: {
         TheHeader,
         TheFooter,
-        TextField
+        TextField,
+        SimpleSelect
     }
 };
 </script>
