@@ -8,7 +8,6 @@
                     <h1>Aanmelden</h1>
                     <router-view></router-view>
                 </div>
-
                 <div class="col-4">
                     <contact-card />
                 </div>
