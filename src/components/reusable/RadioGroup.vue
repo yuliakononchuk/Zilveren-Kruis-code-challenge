@@ -8,9 +8,10 @@
                     :key="option.id"
                     :id="option.id"
                     :name="name"
-                    :value="option.value"
                     @optionChange="handleChange"
-                />
+                >
+                    {{ option.value }}
+                </radio-option>
             </div>
         </div>
     </div>

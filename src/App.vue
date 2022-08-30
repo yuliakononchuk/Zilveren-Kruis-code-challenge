@@ -53,81 +53,30 @@
                                 Kies uw basisverzekering
                             </label>
                             <div class="form-row">
-                                <div class="radio__tile">
-                                    <div
-                                        class="radio custom-radio radio__option"
-                                    >
-                                        <input
-                                            value="Basis Budget"
-                                            type="radio"
-                                            name="radio-insurance"
-                                            id="radio-insurance-basis-budget"
-                                            class="radio__input custom-control-input"
-                                        />
-                                        <label
-                                            for="radio-insurance-basis-budget"
-                                            class="radio__label custom-control-label"
-                                        >
-                                            <p class="radio__description">
-                                                Basis Budget
-                                            </p>
-                                            <p class="radio__price">
-                                                € 1.393,26 per jaar
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="radio__tile radio__tile--choice">
-                                    <div class="badge radio__tile-badge">
-                                        Meest gekozen
-                                    </div>
-                                    <div
-                                        class="radio custom-radio radio__option"
-                                    >
-                                        <input
-                                            value="Basis Zeker"
-                                            type="radio"
-                                            name="radio-insurance"
-                                            id="radio-insurance-basis-zeker"
-                                            class="radio__input custom-control-input"
-                                        />
-                                        <label
-                                            for="radio-insurance-basis-zeker"
-                                            class="radio__label custom-control-label"
-                                        >
-                                            <p class="radio__description">
-                                                Basis Zeker
-                                            </p>
-                                            <p class="radio__price">
-                                                € 1.483,54 per jaar
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="radio__tile">
-                                    <div
-                                        class="radio custom-radio radio__option"
-                                    >
-                                        <input
-                                            value="Basis Exclusief (Restitutie)"
-                                            type="radio"
-                                            name="radio-insurance"
-                                            id="radio-insurance-basis-exclusief-(restitutie)"
-                                            class="radio__input custom-control-input"
-                                        />
-                                        <label
-                                            for="radio-insurance-basis-exclusief-(restitutie)"
-                                            class="radio__label custom-control-label"
-                                        >
-                                            <p class="radio__description">
-                                                Basis Exclusief (Restitutie)
-                                            </p>
-                                            <p class="radio__price">
-                                                € 1.624,62 per jaar
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
+                                <radio-tile
+                                    id="radio-insurance-basis-budget"
+                                    title="Basis Budget"
+                                    price="€ 1.393,26 per jaar"
+                                    name="radio-insurance"
+                                    @radioTileChange="() => {}"
+                                />
+                                <radio-tile
+                                    id="radio-insurance-basis-zeker"
+                                    title="Basis Zeker"
+                                    price="€ 1.483,54 per jaar"
+                                    :selected="true"
+                                    badge_title="Meest gekozen"
+                                    name="radio-insurance"
+                                    @radioTileChange="() => {}"
+                                />
+
+                                <radio-tile
+                                    id="radio-insurance-basis-exclusief-(restitutie)"
+                                    title="Basis Exclusief (Restitutie)"
+                                    price="€ 1.624,62 per jaar"
+                                    name="radio-insurance"
+                                    @radioTileChange="() => {}"
+                                />
                             </div>
                         </div>
                     </form-group>
@@ -186,6 +135,7 @@ import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import DateSelector from '@/components/reusable/DateSelector.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioGroup from '@/components/reusable/RadioGroup.vue';
+import RadioTile from '@/components/reusable/RadioTile.vue';
 import TheContactCard from '@/components/single_instance/TheContactCard.vue';
 import options from '@/constants/options.js';
 
@@ -199,6 +149,7 @@ export default {
         DateSelector,
         FormGroup,
         RadioGroup,
+        RadioTile,
         TheContactCard
     },
     computed: {

@@ -9,7 +9,7 @@
             @change="handleChange"
         />
         <label class="radio__label custom-control-label" :for="id">
-            {{ value }}
+            <slot></slot>
         </label>
     </div>
 </template>
@@ -19,10 +19,6 @@ export default {
     name: 'RadioOption',
     props: {
         id: {
-            type: String,
-            required: true
-        },
-        value: {
             type: String,
             required: true
         },
