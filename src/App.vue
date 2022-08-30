@@ -20,45 +20,12 @@
                         <text-field title="Tussenvoegsels" />
                         <text-field title="Achternaam" />
 
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">Geslacht</label>
-                                <div class="form-row">
-                                    <div
-                                        class="radio custom-radio radio__option"
-                                    >
-                                        <input
-                                            id="man"
-                                            class="radio__input custom-control-input"
-                                            type="radio"
-                                            name="geslacht"
-                                        />
-                                        <label
-                                            class="radio__label custom-control-label"
-                                            for="man"
-                                        >
-                                            Man
-                                        </label>
-                                    </div>
-                                    <div
-                                        class="radio custom-radio radio__option"
-                                    >
-                                        <input
-                                            id="vrouw"
-                                            class="radio__input custom-control-input"
-                                            type="radio"
-                                            name="geslacht"
-                                        />
-                                        <label
-                                            class="radio__label custom-control-label"
-                                            for="vrouw"
-                                        >
-                                            Vrouw
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <radio-group
+                            name="geslacht"
+                            title="Geslacht"
+                            :options="options.geslacht"
+                            @radioChange="() => {}"
+                        />
 
                         <date-selector
                             title="Geboortedatum"
@@ -199,6 +166,7 @@
                     <form-group title="Totaalpremie"> </form-group>
                     <form-group title="Adres en contactgegevens"> </form-group>
                 </div>
+
                 <div class="col-4">
                     <div class="card card--filled-secondary h-auto">
                         <div class="card-body">
@@ -248,6 +216,7 @@ import TextField from '@/components/reusable/TextField.vue';
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import DateSelector from '@/components/reusable/DateSelector.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
+import RadioGroup from '@/components/reusable/RadioGroup.vue';
 import options from '@/constants/options.js';
 
 export default {
@@ -258,7 +227,8 @@ export default {
         TextField,
         SimpleSelect,
         DateSelector,
-        FormGroup
+        FormGroup,
+        RadioGroup
     },
     computed: {
         options() {

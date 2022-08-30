@@ -1,0 +1,49 @@
+<template>
+    <div class="form-input my-4">
+        <div class="input__group">
+            <label class="input__title">{{ title }}</label>
+            <div class="form-row">
+                <radio-option
+                    v-for="option in options"
+                    :key="option.id"
+                    :id="option.id"
+                    :name="name"
+                    :value="option.value"
+                    @optionChange="handleChange"
+                />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import RadioOption from './RadioOption.vue';
+
+export default {
+    name: 'RadioGroup',
+    components: {
+        RadioOption
+    },
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        options: {
+            type: Array,
+            required: true
+        }
+    },
+    methods: {
+        handleChange(value) {
+            this.$emit('radioChange', value);
+        }
+    }
+};
+</script>
+
+<style lang="scss"></style>

@@ -1,6 +1,5 @@
 export default {
- redenVanAanmelding:
-    [
+    redenVanAanmelding: [
         {
             id: 'nieuw',
             title: 'Nieuwe werkgever met collectiviteit bij Zilveren Kruis'
@@ -22,10 +21,10 @@ export default {
         }
     ],
     betaalTermijn: [
-    { id: 'maand', title: 'per maand' },
-    { id: 'kwartaal', title: 'per kwartaal' },
-    { id: 'jaar', title: 'per jaar', selected: true}
-],
+        { id: 'maand', title: 'per maand' },
+        { id: 'kwartaal', title: 'per kwartaal' },
+        { id: 'jaar', title: 'per jaar', selected: true }
+    ],
     aanvullendVerzekering: [
         {
             id: '0',
@@ -47,25 +46,29 @@ export default {
         {
             id: '4',
             title: 'Aanvullend 4 - € 359,73 per jaar'
-        }],
+        }
+    ],
     tandartsVerzekering: [
-    {
-        id: '0',
-        title: 'Geen tandartsverzekering geselecteerd',
-        selected: true
-    },
-    {
-        id: '1',
-        title: 'Tand 1 - € 80,28 per jaar'
-    },
-    {
-        id: '2',
-        title: 'Tand 2 - € 221,65 per jaar'
-    },
-    {
-        id: '3',
-        title: 'Tand 3 - € 449,36 per jaar'
-    }
-],
-
-}
+        {
+            id: '0',
+            title: 'Geen tandartsverzekering geselecteerd',
+            selected: true
+        },
+        {
+            id: '1',
+            title: 'Tand 1 - € 80,28 per jaar'
+        },
+        {
+            id: '2',
+            title: 'Tand 2 - € 221,65 per jaar'
+        },
+        {
+            id: '3',
+            title: 'Tand 3 - € 449,36 per jaar'
+        }
+    ],
+    geslacht: [
+        { id: 'man', value: 'Man' },
+        { id: 'vrouw', value: 'Vrouw' }
+    ]
+};
