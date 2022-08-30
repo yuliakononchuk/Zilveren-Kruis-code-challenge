@@ -6,9 +6,7 @@
             <div class="row">
                 <div class="col-8">
                     <h1>Aanmelden</h1>
-                    <personal-details />
-                    <insurance-details />
-                    <controle-summary />
+                    <router-view></router-view>
                 </div>
 
                 <div class="col-4">
@@ -25,9 +23,6 @@
 import PageHeader from '@/components/single_instance/PageHeader.vue';
 import PageFooter from '@/components/single_instance/PageFooter.vue';
 import ContactCard from '@/components/single_instance/ContactCard.vue';
-import PersonalDetails from '@/components/single_instance/signup_form/PersonalDetails.vue';
-import InsuranceDetails from '@/components/single_instance/signup_form/InsuranceDetails.vue';
-import ControleSummary from '@/components/single_instance/signup_form/ControleSummary.vue';
 import options from '@/constants/options.js';
 
 export default {
@@ -35,9 +30,6 @@ export default {
     components: {
         PageHeader,
         PageFooter,
-        PersonalDetails,
-        InsuranceDetails,
-        ControleSummary,
         ContactCard
     },
     computed: {

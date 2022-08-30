@@ -53,6 +53,7 @@
                 :options="options.tandartsVerzekering"
             />
         </form-group>
+        <router-link to="/controle"> Ge verder naar Controle </router-link>
     </section>
 </template>
 

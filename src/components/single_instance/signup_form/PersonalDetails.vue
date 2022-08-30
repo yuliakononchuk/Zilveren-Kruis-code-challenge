@@ -32,6 +32,9 @@
                 :is-valid="true"
             />
         </form-group>
+        <router-link to="/verzekering">
+            Ge verder naar Verzekering
+        </router-link>
     </section>
 </template>
 
