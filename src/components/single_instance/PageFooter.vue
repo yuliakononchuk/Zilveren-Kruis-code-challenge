@@ -101,7 +101,7 @@
 
 <script>
 export default {
-    name: 'TheFooter'
+    name: 'PageFooter'
 };
 </script>
 

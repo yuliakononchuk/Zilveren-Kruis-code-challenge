@@ -213,7 +213,7 @@
 
 <script>
 export default {
-    name: 'TheHeader'
+    name: 'PageHeader'
 };
 </script>
 

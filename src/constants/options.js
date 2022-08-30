@@ -26,9 +26,22 @@ export default {
         { id: 'jaar', title: 'per jaar', selected: true }
     ],
     basisVerzekering: [
-        {id: "radio-insurance-basis-budget", title: "Basis Budget", pricePerYear: "€ 1.393,26"},
-        {id: "radio-insurance-basis-zeker", title: "Basis Zeker", pricePerYear: "€ 1.483,54", hasBadge: "true"},
-        {id: "radio-insurance-basis-exclusief-(restitutie)", title: "Basis Exclusief (Restitutie)", pricePerYear: "€ 1.624,62"},
+        {
+            id: 'radio-insurance-basis-budget',
+            title: 'Basis Budget',
+            pricePerYear: '€ 1.393,26'
+        },
+        {
+            id: 'radio-insurance-basis-zeker',
+            title: 'Basis Zeker',
+            pricePerYear: '€ 1.483,54',
+            hasBadge: 'true'
+        },
+        {
+            id: 'radio-insurance-basis-exclusief-(restitutie)',
+            title: 'Basis Exclusief (Restitutie)',
+            pricePerYear: '€ 1.624,62'
+        }
     ],
     aanvullendVerzekering: [
         {

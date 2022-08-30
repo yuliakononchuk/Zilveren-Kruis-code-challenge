@@ -24,7 +24,7 @@
 import InfoCard from '@/components/reusable/InfoCard.vue';
 
 export default {
-    name: 'TheContactCard',
+    name: 'ContactCard',
     components: {
         InfoCard
     }
