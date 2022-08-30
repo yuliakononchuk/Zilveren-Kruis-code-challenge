@@ -145,7 +145,8 @@
                     </form-group>
                     <form-group
                         title="Aanvullende verzekering"
-                        subtitle="Onze aanvullende verzekeringen kennen ruim 100
+                        subtitle="
+                Onze aanvullende verzekeringen kennen ruim 100
                 verschillende vergoedingen. De hoogte van de
                 vergoeding verschilt per pakket"
                     >
@@ -168,39 +169,7 @@
                 </div>
 
                 <div class="col-4">
-                    <div class="card card--filled-secondary h-auto">
-                        <div class="card-body">
-                            <div class="sf-contactblok-content">
-                                <h3 class="mb-2">We staan voor je klaar</h3>
-                                <p class="mb-5">
-                                    Twijfel je? Heb je een vraag?
-                                </p>
-                                <div class="phonenumber mb-2">
-                                    <a href="tel:0900 040 03 09">
-                                        <span class="sr-only">
-                                            Telefoonnummer
-                                        </span>
-                                        0900 040 03 09
-                                    </a>
-                                    <div class="popover__container ml-1">
-                                        <button
-                                            id="info-phone"
-                                            type="button"
-                                            class="btn popover__btn btn--popover btn-none"
-                                        >
-                                            <span class="sr-only">
-                                                Informatie weergeven
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <small>
-                                    Open op maandag t/m vrijdag van 08:00 tot
-                                    17:00
-                                </small>
-                            </div>
-                        </div>
-                    </div>
+                    <the-contact-card />
                 </div>
             </div>
         </div>
@@ -217,6 +186,7 @@ import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import DateSelector from '@/components/reusable/DateSelector.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioGroup from '@/components/reusable/RadioGroup.vue';
+import TheContactCard from '@/components/single_instance/TheContactCard.vue';
 import options from '@/constants/options.js';
 
 export default {
@@ -228,7 +198,8 @@ export default {
         SimpleSelect,
         DateSelector,
         FormGroup,
-        RadioGroup
+        RadioGroup,
+        TheContactCard
     },
     computed: {
         options() {

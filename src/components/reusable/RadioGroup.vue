@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import RadioOption from './RadioOption.vue';
+import RadioOption from '@/components/reusable/RadioOption.vue';
 
 export default {
     name: 'RadioGroup',
