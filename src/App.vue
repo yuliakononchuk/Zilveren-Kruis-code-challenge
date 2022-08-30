@@ -60,17 +60,12 @@
                             </div>
                         </div>
 
-                        <div class="form-input my-4">
-                            <div class="input__group">
-                                <label class="input__title">
-                                    Geboortedatum
-                                </label>
-                                <input
-                                    class="input__field form-control"
-                                    type="text"
-                                />
-                            </div>
-                        </div>
+                        <date-selector
+                            title="Geboortedatum"
+                            :maxDate="dateToday"
+                            @dateChange="() => {}"
+                        />
+
                         <text-field
                             title="Burgerservicenummer"
                             error-message="Helaas is het ingevoerde burgerservicenummer niet geldig. Probeer het opnieuw."
@@ -251,6 +246,7 @@ import TheHeader from '@/components/single_instance/TheHeader.vue';
 import TheFooter from '@/components/single_instance/TheFooter.vue';
 import TextField from '@/components/reusable/TextField.vue';
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
+import DateSelector from '@/components/reusable/DateSelector.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import options from '@/constants/options.js';
 
@@ -261,11 +257,16 @@ export default {
         TheFooter,
         TextField,
         SimpleSelect,
+        DateSelector,
         FormGroup
     },
     computed: {
         options() {
             return options;
+        },
+        dateToday() {
+            const today = new Date();
+            return today.toISOString().split('T')[0];
         }
     }
 };
