@@ -12,16 +12,7 @@
                         <simple-select
                             title="Wat is de reden van uw aanvraag?"
                             placeholder="Er is nog niets geselecteerd"
-                            :options="[
-                                {
-                                    id: 'nieuw',
-                                    title: 'Nieuwe werkgever met collectiviteit bij Zilveren Kruis'
-                                },
-                                {
-                                    id: 'overstappen',
-                                    title: 'Overstappen per 1-1-2023 naar Zilveren Kruis'
-                                }
-                            ]"
+                            :options="options.redenVanAanmelding"
                         />
                     </form-group>
                     <form-group title="Persoonlijke gegevens">
@@ -181,31 +172,13 @@
                     <form-group>
                         <simple-select
                             title="Kies je betaaltermijn"
-                            :options="[
-                                { id: 'maand', title: 'per maand' },
-                                { id: 'kwartaal', title: 'per kwartaal' },
-                                {
-                                    id: 'jaar',
-                                    title: 'per jaar',
-                                    selected: true
-                                }
-                            ]"
+                            :options="options.betaalTermijn"
                         />
                     </form-group>
                     <form-group title="Eigen risico">
                         <simple-select
                             title="Kies de hoogste van het eigen risico"
-                            :options="[
-                                {
-                                    id: '1',
-                                    title: '€ 385 - verplicht eigen risico',
-                                    selected: true
-                                },
-                                {
-                                    id: '2',
-                                    title: '€ 885 - korting van € 22 per jaar'
-                                }
-                            ]"
+                            :options="options.eigenRisico"
                         />
                     </form-group>
                     <form-group
@@ -214,57 +187,15 @@
                 verschillende vergoedingen. De hoogte van de
                 vergoeding verschilt per pakket"
                     >
-                        >
-
                         <simple-select
                             title="Kies uw aanvullende verzekering"
-                            :options="[
-                                {
-                                    id: '0',
-                                    title: 'Geen aanvullende verzekering geselecteerd',
-                                    selected: true
-                                },
-                                {
-                                    id: '1',
-                                    title: 'Aanvullend 1 - € 21,38 per jaar'
-                                },
-                                {
-                                    id: '2',
-                                    title: 'Aanvullend 2 - € 85,06 per jaar'
-                                },
-                                {
-                                    id: '3',
-                                    title: 'Aanvullend 3 - € 198,63 per jaar'
-                                },
-                                {
-                                    id: '4',
-                                    title: 'Aanvullend 4 - € 359,73 per jaar'
-                                }
-                            ]"
+                            :options="options.aanvullendVerzekering"
                         />
                     </form-group>
                     <form-group>
                         <simple-select
                             title="Kies uw tandartsverzekering"
-                            :options="[
-                                {
-                                    id: '0',
-                                    title: 'Geen tandartsverzekering geselecteerd',
-                                    selected: true
-                                },
-                                {
-                                    id: '1',
-                                    title: 'Tand 1 - € 80,28 per jaar'
-                                },
-                                {
-                                    id: '2',
-                                    title: 'Tand 2 - € 221,65 per jaar'
-                                },
-                                {
-                                    id: '3',
-                                    title: 'Tand 3 - € 449,36 per jaar'
-                                }
-                            ]"
+                            :options="options.tandartsVerzekering"
                         />
                     </form-group>
 
@@ -321,6 +252,7 @@ import TheFooter from '@/components/single_instance/TheFooter.vue';
 import TextField from '@/components/reusable/TextField.vue';
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
+import options from '@/constants/options.js';
 
 export default {
     name: 'App',
@@ -330,6 +262,11 @@ export default {
         TextField,
         SimpleSelect,
         FormGroup
+    },
+    computed: {
+        options() {
+            return options;
+        }
     }
 };
 </script>
