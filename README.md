@@ -26,7 +26,7 @@ Bouw het voorbeeldformulier (zie src/App.vue voor de huidige html) verder af. We
 
 ## Functionaliteiten:
 
--   De gebruiker moet een aanvraagRedenId kunnen kiezen
+-   De gebruiker moet een aanvraagReden kunnen kiezen
     -   Mogelijke keuzes:
         -   Nieuwe werkgever met collectiviteit bij Zilveren Kruis
         -   Overstappen per 1-1-2023 naar Zilveren Kruis
