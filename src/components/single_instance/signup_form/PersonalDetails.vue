@@ -5,8 +5,8 @@
             <simple-select
                 title="Wat is de reden van uw aanvraag?"
                 placeholder="Er is nog niets geselecteerd"
-                :options="options.redenVanAanmelding"
-                @selectChange="updateAanvraagReden"
+                :options="options.aanvraagReden"
+                @selectChange="updateaanvraagRedenId"
             />
         </form-group>
         <form-group title="Persoonlijke gegevens">
@@ -75,7 +75,7 @@ export default {
     },
     methods: {
         ...mapMutations([
-            'updateAanvraagReden',
+            'updateaanvraagRedenId',
             'updateNaam',
             'updateTussenvoegsels',
             'updateAchternaam',

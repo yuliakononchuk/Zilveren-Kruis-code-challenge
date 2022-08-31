@@ -16,7 +16,7 @@
                         :key="option.id"
                         :id="option.id"
                         :title="option.title"
-                        :price="`${option.pricePerYear} per jaar`"
+                        :price="`${formatCurrency(option.pricePerYear)} per ${betaalTermijn.name}`"
                         name="radio-insurance"
                         @radioTileChange="updateBasisVerzekering"
                     />
@@ -33,9 +33,9 @@
         </form-group>
         <form-group title="Eigen risico">
             <simple-select
-                :disabled="basisVerzekeringNotSelected"
+                :disabled="basisVerzekeringIdNotSelected"
                 :placeholder="
-                    basisVerzekeringNotSelected
+                    basisVerzekeringIdNotSelected
                         ? 'Kies eerst uw basisverzekering'
                         : 'Er is nog niets geselecteerd'
                 "
@@ -53,7 +53,7 @@
         >
             <simple-select
                 title="Kies uw aanvullende verzekering"
-                :options="options.aanvullendeVerzekering"
+                :options="generateOptions(options.aanvullendeVerzekering)"
                 @selectChange="updateAanvullendeVerzekering"
                 placeholder="Geen aanvullende verzekering geselecteerd"
             />
@@ -61,7 +61,7 @@
         <form-group>
             <simple-select
                 title="Kies uw tandartsverzekering"
-                :options="options.tandartsVerzekering"
+                :options="generateOptions(options.tandartsVerzekering)"
                 @selectChange="updateTandartsVerzekering"
                 placeholder="Geen tandartsverzekering geselecteerd"
             />
@@ -75,6 +75,7 @@ import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioTile from '@/components/reusable/RadioTile.vue';
 import options from '@/constants/options.js';
+import formatCurrency from '@/helpers/format_currency.js'
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {
@@ -88,9 +89,19 @@ export default {
         options() {
             return options;
         },
-        ...mapGetters(['basisVerzekeringNotSelected'])
+        ...mapGetters(['basisVerzekeringIdNotSelected', 'betaalTermijn'])
     },
     methods: {
+        generateOptions(options) {
+            return options.map(option => {
+                const { id } = option;
+                const title = `${option.title} - ${formatCurrency(option.pricePerYear)} per ${this.betaalTermijn.name}`;
+                return { id, title };
+            });
+        },
+        formatCurrency(curr) {
+            return formatCurrency(curr)
+        },
         ...mapMutations([
             'updateBasisVerzekering',
             'updateBetaalTermijn',

@@ -1,5 +1,5 @@
 export default {
-    redenVanAanmelding: [
+    aanvraagReden: [
         {
             id: 'nieuw',
             title: 'Nieuwe werkgever met collectiviteit bij Zilveren Kruis'
@@ -13,65 +13,74 @@ export default {
         {
             id: '1',
             title: '€ 385 - verplicht eigen risico',
+            deductible: 385
         },
         {
             id: '2',
-            title: '€ 885 - korting van € 22 per jaar'
+            title: '€ 885 - korting van € 22 per jaar',
+            deductible: 885
         }
     ],
     betaalTermijn: [
-        { id: 'maand', title: 'per maand' },
-        { id: 'kwartaal', title: 'per kwartaal' },
-        { id: 'jaar', title: 'per jaar', selected: true }
+        { id: 'maand', name: 'maand', title: 'per maand' },
+        { id: 'kwartaal', name: 'kwartaal', title: 'per kwartaal' },
+        { id: 'jaar', name: 'jaar', title: 'per jaar', selected: true }
     ],
     basisVerzekering: [
         {
             id: 'radio-insurance-basis-budget',
             title: 'Basis Budget',
-            pricePerYear: '€ 1.393,26'
+            pricePerYear: 1393.26
         },
         {
             id: 'radio-insurance-basis-zeker',
             title: 'Basis Zeker',
-            pricePerYear: '€ 1.483,54',
+            pricePerYear: 1483.54,
             hasBadge: 'true'
         },
         {
             id: 'radio-insurance-basis-exclusief-(restitutie)',
             title: 'Basis Exclusief (Restitutie)',
-            pricePerYear: '€ 1.624,62'
+            pricePerYear: 1624.62
         }
     ],
     aanvullendeVerzekering: [
         {
             id: '1',
-            title: 'Aanvullend 1 - € 21,38 per jaar'
+            title: 'Aanvullend 1',
+            pricePerYear: 21.38
         },
         {
             id: '2',
-            title: 'Aanvullend 2 - € 85,06 per jaar'
+            title: 'Aanvullend 2',
+            pricePerYear: 85.06
         },
         {
             id: '3',
-            title: 'Aanvullend 3 - € 198,63 per jaar'
+            title: 'Aanvullend 3',
+            pricePerYear: 198.63
         },
         {
             id: '4',
-            title: 'Aanvullend 4 - € 359,73 per jaar'
+            title: 'Aanvullend 4',
+            pricePerYear: 359.73
         }
     ],
     tandartsVerzekering: [
         {
             id: '1',
-            title: 'Tand 1 - € 80,28 per jaar'
+            title: 'Tand 1',
+            pricePerYear: 80.28
         },
         {
             id: '2',
-            title: 'Tand 2 - € 221,65 per jaar'
+            title: 'Tand 2',
+            pricePerYear: 221.65
         },
         {
             id: '3',
-            title: 'Tand 3 - € 449,36 per jaar'
+            title: 'Tand 3',
+            pricePerYear: 449.36
         }
     ],
     geslacht: [
