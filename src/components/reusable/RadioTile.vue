@@ -3,7 +3,12 @@
         <div v-if="badgeTitle.length" class="badge radio__tile-badge">
             {{ badgeTitle }}
         </div>
-        <radio-option :id="id" :name="name" @optionChange="handleChange">
+        <radio-option
+            :id="id"
+            :name="name"
+            @optionChange="handleChange"
+            :checked="checked"
+        >
             <p class="radio__description">
                 {{ title }}
             </p>
@@ -28,6 +33,10 @@ export default {
         }
     },
     props: {
+        checked: {
+            type: Boolean,
+            default: false
+        },
         name: {
             type: String,
             required: true

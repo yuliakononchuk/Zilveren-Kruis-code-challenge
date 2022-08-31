@@ -3,6 +3,7 @@
         <div class="input__group">
             <label class="input__title"> {{ title }} </label>
             <input
+                :value="value"
                 class="input__field form-control"
                 type="date"
                 :min="minDate"
@@ -17,6 +18,10 @@
 export default {
     name: 'DateSelector',
     props: {
+        value: {
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             default: ''

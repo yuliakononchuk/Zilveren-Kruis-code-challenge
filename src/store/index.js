@@ -44,15 +44,17 @@ export default new Vuex.Store({
                 option => option.id === state.aanvraagRedenId
             );
         },
+        geslacht(state) {
+            return options.geslacht.find(
+                option => option.id === state.geslachtId
+            );
+        },
         betaalTermijn(state) {
             return options.betaalTermijn.find(
                 option => option.id === state.betaalTermijnId
             );
         },
         eigenRisico(state) {
-            console.warn(state.eigenRisicoId, options.eigenRisico.find(
-                option => option.id === state.eigenRisicoId
-            ))
             return options.eigenRisico.find(
                 option => option.id === state.eigenRisicoId
             );
@@ -73,8 +75,12 @@ export default new Vuex.Store({
             );
         },
         totalVerzekeringValue(state, getters) {
-            return getters.basisVerzekering.pricePerYear + getters.aanvullendeVerzekering.pricePerYear + getters.tandartsVerzekering.pricePerYear
-        },
+            return (
+                getters.basisVerzekering.pricePerYear +
+                getters.aanvullendeVerzekering.pricePerYear +
+                getters.tandartsVerzekering.pricePerYear
+            );
+        }
     },
 
     mutations: {
@@ -112,7 +118,6 @@ export default new Vuex.Store({
             state.aanvullendeVerzekeringId = value;
         },
         updateTandartsVerzekering(state, value) {
-            console.warn(state);
             state.tandartsVerzekeringId = value;
         }
     }

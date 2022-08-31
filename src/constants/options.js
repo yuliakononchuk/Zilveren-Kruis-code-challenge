@@ -24,7 +24,7 @@ export default {
     betaalTermijn: [
         { id: 'maand', name: 'maand', title: 'per maand' },
         { id: 'kwartaal', name: 'kwartaal', title: 'per kwartaal' },
-        { id: 'jaar', name: 'jaar', title: 'per jaar', selected: true }
+        { id: 'jaar', name: 'jaar', title: 'per jaar'}
     ],
     basisVerzekering: [
         {
@@ -84,7 +84,7 @@ export default {
         }
     ],
     geslacht: [
-        { id: 'man', value: 'Man' },
-        { id: 'vrouw', value: 'Vrouw' }
+        { id: 'man', title: 'Man' },
+        { id: 'vrouw', title: 'Vrouw' }
     ]
 };

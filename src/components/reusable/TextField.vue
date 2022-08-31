@@ -9,6 +9,7 @@
                     { 'is-invalid': !isValid }
                 ]"
                 type="text"
+                :value="value"
                 @blur="handleBlur"
                 @focus="handleFocus"
                 @input="handleChange"
@@ -28,6 +29,10 @@
 export default {
     name: 'TextField',
     props: {
+        value: {
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             default: ''

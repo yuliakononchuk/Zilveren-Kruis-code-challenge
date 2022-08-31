@@ -3,6 +3,7 @@
         <input
             :id="id"
             :value="id"
+            :checked="checked"
             class="radio__input custom-control-input"
             type="radio"
             :name="name"
@@ -25,6 +26,10 @@ export default {
         name: {
             type: String,
             required: true
+        },
+        checked: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {

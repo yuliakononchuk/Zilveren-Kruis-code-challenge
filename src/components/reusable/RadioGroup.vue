@@ -8,9 +8,10 @@
                     :key="option.id"
                     :id="option.id"
                     :name="name"
+                    :checked="value === option.id"
                     @optionChange="handleChange"
                 >
-                    {{ option.value }}
+                    {{ option.title }}
                 </radio-option>
             </div>
         </div>
@@ -26,6 +27,10 @@ export default {
         RadioOption
     },
     props: {
+        value: {
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             required: true

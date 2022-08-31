@@ -1,10 +1,5 @@
 <template>
-    <option
-        :value="value"
-        :selected="selected"
-        :disabled="disabled"
-        :hidden="hidden"
-    >
+    <option :checked="checked" :disabled="disabled" :hidden="hidden">
         {{ title }}
     </option>
 </template>
@@ -13,17 +8,13 @@
 export default {
     name: 'SelectOption',
     props: {
-        value: {
-            type: String,
-            required: true
+        checked: {
+            type: Boolean,
+            default: false
         },
         title: {
             type: String,
             required: true
-        },
-        selected: {
-            type: Boolean,
-            default: false
         },
         disabled: {
             type: Boolean,

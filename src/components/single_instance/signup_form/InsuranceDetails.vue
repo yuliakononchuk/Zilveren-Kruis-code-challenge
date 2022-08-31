@@ -13,10 +13,13 @@
                 <div class="form-row">
                     <radio-tile
                         v-for="option in options.basisVerzekering"
+                        :checked="basisVerzekeringId === option.id"
                         :key="option.id"
                         :id="option.id"
                         :title="option.title"
-                        :price="`${formatCurrency(option.pricePerYear)} per ${betaalTermijn.name}`"
+                        :price="`${formatCurrency(option.pricePerYear)} per ${
+                            betaalTermijn.name
+                        }`"
                         name="radio-insurance"
                         @radioTileChange="updateBasisVerzekering"
                     />
@@ -26,6 +29,7 @@
         <form-group>
             <simple-select
                 title="Kies je betaaltermijn"
+                :value="betaalTermijnId"
                 :options="options.betaalTermijn"
                 @selectChange="updateBetaalTermijn"
                 :has-placeholder="false"
@@ -33,6 +37,7 @@
         </form-group>
         <form-group title="Eigen risico">
             <simple-select
+                :value="eigenRisicoId"
                 :disabled="basisVerzekeringIdNotSelected"
                 :placeholder="
                     basisVerzekeringIdNotSelected
@@ -52,6 +57,7 @@
                 vergoeding verschilt per pakket"
         >
             <simple-select
+                :value="aanvullendeVerzekeringId"
                 title="Kies uw aanvullende verzekering"
                 :options="generateOptions(options.aanvullendeVerzekering)"
                 @selectChange="updateAanvullendeVerzekering"
@@ -60,6 +66,7 @@
         </form-group>
         <form-group>
             <simple-select
+                :value="tandartsVerzekeringId"
                 title="Kies uw tandartsverzekering"
                 :options="generateOptions(options.tandartsVerzekering)"
                 @selectChange="updateTandartsVerzekering"
@@ -75,8 +82,8 @@ import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioTile from '@/components/reusable/RadioTile.vue';
 import options from '@/constants/options.js';
-import formatCurrency from '@/helpers/format_currency.js'
-import { mapGetters, mapMutations } from 'vuex';
+import formatCurrency from '@/helpers/format_currency.js';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
     name: 'InsuranceDetails',
@@ -89,18 +96,27 @@ export default {
         options() {
             return options;
         },
+        ...mapState([
+            'basisVerzekeringId',
+            'betaalTermijnId',
+            'eigenRisicoId',
+            'aanvullendeVerzekeringId',
+            'tandartsVerzekeringId'
+        ]),
         ...mapGetters(['basisVerzekeringIdNotSelected', 'betaalTermijn'])
     },
     methods: {
         generateOptions(options) {
             return options.map(option => {
                 const { id } = option;
-                const title = `${option.title} - ${formatCurrency(option.pricePerYear)} per ${this.betaalTermijn.name}`;
+                const title = `${option.title} - ${formatCurrency(
+                    option.pricePerYear
+                )} per ${this.betaalTermijn.name}`;
                 return { id, title };
             });
         },
         formatCurrency(curr) {
-            return formatCurrency(curr)
+            return formatCurrency(curr);
         },
         ...mapMutations([
             'updateBasisVerzekering',

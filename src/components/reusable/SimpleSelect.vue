@@ -8,13 +8,13 @@
                 :disabled="disabled"
                 class="form-control"
                 @change="handleChange"
+                :value="value"
             >
                 <select-option
                     v-if="placeholder.length"
                     value=""
                     :title="placeholder"
                     disabled
-                    selected
                     hidden
                 />
                 <select-option
@@ -22,7 +22,6 @@
                     :key="option.id"
                     :value="option.id"
                     :title="option.title"
-                    :selected="option.selected"
                 />
             </select>
         </div>
@@ -38,6 +37,10 @@ export default {
         SelectOption
     },
     props: {
+        value: {
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             required: true
