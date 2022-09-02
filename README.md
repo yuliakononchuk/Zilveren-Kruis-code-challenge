@@ -1,3 +1,22 @@
+# OPLOSSING
+
+## Wat heb ik gedaan
+
+-   Formulier validatie (via [vuelidate](https://vuelidate-next.netlify.app/)): BSN (validatie on blur) + required velden (validatie on formulier submit)
+-   Geboortedatum veld - native datepicker & eenvoudige validatie
+-   Opsplitsen in componenten
+-   Enkele unit tests voor helpers en voor BSN validatie
+-   De logica achter jaar/kwartaal/maand overschakelen
+-   Eenvoudige Vuex implementatie
+-   Eenvoudige VueRouter implementatie (zonder styling)
+
+## Wat is er nog te doen
+
+-   Wat styling (bijvoorbeeld van een ‘Ga verder…’ button)
+-   Meer unit en integratie tests (vooraal voor componenten)
+-   Meer validaties voor formulier velden (bijvoorbeeld naam/achternaam minimaal en maximaal lengte, geboortedatum min/max, ...), validatie on blur om snelle feedback te geven)
+-   Meer elementen op de pagina’s die wel op Figma designs zijn
+
 # Zilveren Kruis code challenge
 
 Super tof dat je interesse hebt om bij Zilveren Kruis aan de slag te gaan! We werken elke dag met een grote groep van developers aan de website van Zilveren Kruis. Deze groep van developers willen we heel graag uitbreiden. Daarbij vinden we opleiding, werkervaring of achtergrond eigenlijk helemaal niet zo waardevol. Belangrijker is dat je talent hebt en de juiste motivatie. Daarom kun je bij ons ook solliciteren op de vacature Front-end Developer door mee te doen aan onze code challenge.
