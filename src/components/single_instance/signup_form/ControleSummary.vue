@@ -4,19 +4,19 @@
             <tr>
                 <h2 class="mt-4 mb-4">Controle</h2>
                 <h3>Gekozen pakket</h3>
-                <h3 v-if="naamFormatted">
-                    {{ naamFormatted }}
-                    <span v-if="geboortedatumFormatted">
-                        ({{ geboortedatumFormatted }})
+                <h3 v-if="nameFormatted">
+                    {{ nameFormatted }}
+                    <span v-if="dateOfBirthFormatted">
+                        ({{ dateOfBirthFormatted }})
                     </span>
                 </h3>
 
                 <div class="summary-table__row">
                     <p class="summary-table__row-title">Basisverzekering</p>
                     <div class="summary-table__row-content">
-                        <span> {{ basisVerzekering.title }} </span>
+                        <span> {{ basicInsurance.title }} </span>
                         <span>
-                            {{ formatCurrency(basisVerzekering.pricePerYear) }}
+                            {{ formatCurrency(basicInsurance.pricePerYear) }}
                         </span>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <p class="summary-table__row-title">Eigen risico</p>
                     <div class="summary-table__row-content">
                         <span>
-                            {{ formatCurrency(eigenRisico.deductible) }}
+                            {{ formatCurrency(deductible.deductible) }}
                         </span>
                     </div>
                 </div>
@@ -37,13 +37,9 @@
                         Aanvullende verzekering
                     </p>
                     <div class="summary-table__row-content">
-                        <span>{{ aanvullendeVerzekering.title }}</span>
+                        <span>{{ extraInsurance.title }}</span>
                         <span>
-                            {{
-                                formatCurrency(
-                                    aanvullendeVerzekering.pricePerYear
-                                )
-                            }}
+                            {{ formatCurrency(extraInsurance.pricePerYear) }}
                         </span>
                     </div>
                 </div>
@@ -52,11 +48,9 @@
                 <div class="summary-table__row">
                     <p class="summary-table__row-title">Tandartsverzekering</p>
                     <div class="summary-table__row-content">
-                        <span>{{ tandartsVerzekering.title }}</span>
+                        <span>{{ dentalInsurance.title }}</span>
                         <span>
-                            {{
-                                formatCurrency(tandartsVerzekering.pricePerYear)
-                            }}
+                            {{ formatCurrency(dentalInsurance.pricePerYear) }}
                         </span>
                     </div>
                 </div>
@@ -64,7 +58,7 @@
             <tr>
                 <info-card class="mt-4">
                     <h4 class="mb-2">
-                        Totaal per {{ betaalTermijn.name }} in 2022:
+                        Totaal per {{ paymentPeriod.name }} in 2022:
                     </h4>
                     <h2>{{ formatCurrency(totalVerzekeringValue) }}</h2>
                 </info-card>
@@ -72,10 +66,10 @@
                 <h3>Adres en contactgegevens</h3>
                 <div class="summary-table__block">
                     <span class="summary-table__text--bold">
-                        {{ naamFormatted }}
+                        {{ nameFormatted }}
                     </span>
-                    <span>Geslacht: {{ geslacht.title }}</span>
-                    <span>Geboortedatum: {{ geboortedatumFormatted }}</span>
+                    <span>Geslacht: {{ gender.title }}</span>
+                    <span>Geboortedatum: {{ dateOfBirthFormatted }}</span>
                     <span>Burgerservicenummer: {{ bsn }}</span>
                 </div>
             </tr>
@@ -93,15 +87,15 @@ export default {
     computed: {
         ...mapState(['bsn']),
         ...mapGetters([
-            'geslacht',
-            'naamFormatted',
-            'geboortedatumFormatted',
-            'eigenRisico',
-            'basisVerzekering',
-            'aanvullendeVerzekering',
-            'tandartsVerzekering',
+            'gender',
+            'nameFormatted',
+            'dateOfBirthFormatted',
+            'deductible',
+            'basicInsurance',
+            'extraInsurance',
+            'dentalInsurance',
             'totalVerzekeringValue',
-            'betaalTermijn'
+            'paymentPeriod'
         ])
     },
     methods: {

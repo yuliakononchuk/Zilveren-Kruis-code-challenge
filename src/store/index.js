@@ -10,116 +10,114 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        aanvraagRedenId: '',
-        naam: '',
+        purposeOfRequestId: '',
+        name: '',
         tussenvoegsels: '',
-        achternaam: '',
-        geslachtId: '',
-        geboortedatum: '',
+        surname: '',
+        genderId: '',
+        dateOfBirth: '',
         bsn: '',
-        basisVerzekeringId: '',
-        betaalTermijnId: 'jaar',
-        eigenRisicoId: '',
-        aanvullendeVerzekeringId: '',
-        tandartsVerzekeringId: ''
+        basicInsuranceId: '',
+        paymentPeriodId: 'jaar',
+        deductibleId: '',
+        extraInsuranceId: '',
+        dentalInsuranceId: ''
     },
 
     getters: {
-        basisVerzekeringIdNotSelected(state) {
-            return state.basisVerzekeringId.length === 0;
+        basicInsuranceIdNotSelected(state) {
+            return state.basicInsuranceId.length === 0;
         },
-        naamFormatted(state) {
-            if (!state.naam) return '';
+        nameFormatted(state) {
+            if (!state.name) return '';
             return formatFullName(
-                state.naam,
+                state.name,
                 state.tussenvoegsels,
-                state.achternaam
+                state.surname
             );
         },
-        geboortedatumFormatted(state) {
-            if (!state.geboortedatum) return '';
-            return formatDate(new Date(state.geboortedatum));
+        dateOfBirthFormatted(state) {
+            if (!state.dateOfBirth) return '';
+            return formatDate(new Date(state.dateOfBirth));
         },
-        aanvraagReden(state) {
-            return options.aanvraagReden.find(
-                option => option.id === state.aanvraagRedenId
+        purposeOfRequest(state) {
+            return options.purposeOfRequest.find(
+                option => option.id === state.purposeOfRequestId
             );
         },
-        geslacht(state) {
-            return options.geslacht.find(
-                option => option.id === state.geslachtId
+        gender(state) {
+            return options.gender.find(option => option.id === state.genderId);
+        },
+        paymentPeriod(state) {
+            return options.paymentPeriod.find(
+                option => option.id === state.paymentPeriodId
             );
         },
-        betaalTermijn(state) {
-            return options.betaalTermijn.find(
-                option => option.id === state.betaalTermijnId
+        deductible(state) {
+            return options.deductible.find(
+                option => option.id === state.deductibleId
             );
         },
-        eigenRisico(state) {
-            return options.eigenRisico.find(
-                option => option.id === state.eigenRisicoId
+        basicInsurance(state) {
+            return options.basicInsurance.find(
+                option => option.id === state.basicInsuranceId
             );
         },
-        basisVerzekering(state) {
-            return options.basisVerzekering.find(
-                option => option.id === state.basisVerzekeringId
+        extraInsurance(state) {
+            return options.extraInsurance.find(
+                option => option.id === state.extraInsuranceId
             );
         },
-        aanvullendeVerzekering(state) {
-            return options.aanvullendeVerzekering.find(
-                option => option.id === state.aanvullendeVerzekeringId
-            );
-        },
-        tandartsVerzekering(state) {
-            return options.tandartsVerzekering.find(
-                option => option.id === state.tandartsVerzekeringId
+        dentalInsurance(state) {
+            return options.dentalInsurance.find(
+                option => option.id === state.dentalInsuranceId
             );
         },
         totalVerzekeringValue(state, getters) {
             return (
-                getters.basisVerzekering.pricePerYear +
-                getters.aanvullendeVerzekering.pricePerYear +
-                getters.tandartsVerzekering.pricePerYear
+                getters.basicInsurance.pricePerYear +
+                getters.extraInsurance.pricePerYear +
+                getters.dentalInsurance.pricePerYear
             );
         }
     },
 
     mutations: {
-        updateaanvraagRedenId(state, value) {
-            state.aanvraagRedenId = value;
+        updatePurposeOfRequestId(state, value) {
+            state.purposeOfRequestId = value;
         },
         updateBSN(state, value) {
             state.bsn = formatBSN(value);
         },
-        updateNaam(state, value) {
-            state.naam = formatName(value);
+        updateName(state, value) {
+            state.name = formatName(value);
         },
         updateTussenvoegsels(state, value) {
             state.tussenvoegsels = value.toLowerCase();
         },
-        updateAchternaam(state, value) {
-            state.achternaam = formatName(value);
+        updateSurname(state, value) {
+            state.surname = formatName(value);
         },
-        updateGeslacht(state, value) {
-            state.geslachtId = value;
+        updateGender(state, value) {
+            state.genderId = value;
         },
-        updateGeboortedatum(state, value) {
-            state.geboortedatum = value;
+        updateDateOfBirth(state, value) {
+            state.dateOfBirth = value;
         },
-        updateBasisVerzekering(state, value) {
-            state.basisVerzekeringId = value;
+        updateBasicInsurance(state, value) {
+            state.basicInsuranceId = value;
         },
-        updateBetaalTermijn(state, value) {
-            state.betaalTermijnId = value;
+        updatePaymentPeriod(state, value) {
+            state.paymentPeriodId = value;
         },
-        updateEigenRisico(state, value) {
-            state.eigenRisicoId = value;
+        updateDeductible(state, value) {
+            state.deductibleId = value;
         },
-        updateAanvullendeVerzekering(state, value) {
-            state.aanvullendeVerzekeringId = value;
+        updateExtraInsurance(state, value) {
+            state.extraInsuranceId = value;
         },
-        updateTandartsVerzekering(state, value) {
-            state.tandartsVerzekeringId = value;
+        updateDentalInsurance(state, value) {
+            state.dentalInsuranceId = value;
         }
     }
 });

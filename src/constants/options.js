@@ -1,5 +1,5 @@
 export default {
-    aanvraagReden: [
+    purposeOfRequest: [
         {
             id: 'nieuw',
             title: 'Nieuwe werkgever met collectiviteit bij Zilveren Kruis'
@@ -9,7 +9,7 @@ export default {
             title: 'Overstappen per 1-1-2023 naar Zilveren Kruis'
         }
     ],
-    eigenRisico: [
+    deductible: [
         {
             id: '1',
             title: '€ 385 - verplicht eigen risico',
@@ -21,12 +21,12 @@ export default {
             deductible: 885
         }
     ],
-    betaalTermijn: [
+    paymentPeriod: [
         { id: 'maand', name: 'maand', title: 'per maand' },
         { id: 'kwartaal', name: 'kwartaal', title: 'per kwartaal' },
-        { id: 'jaar', name: 'jaar', title: 'per jaar'}
+        { id: 'jaar', name: 'jaar', title: 'per jaar' }
     ],
-    basisVerzekering: [
+    basicInsurance: [
         {
             id: 'radio-insurance-basis-budget',
             title: 'Basis Budget',
@@ -44,7 +44,7 @@ export default {
             pricePerYear: 1624.62
         }
     ],
-    aanvullendeVerzekering: [
+    extraInsurance: [
         {
             id: '1',
             title: 'Aanvullend 1',
@@ -66,7 +66,7 @@ export default {
             pricePerYear: 359.73
         }
     ],
-    tandartsVerzekering: [
+    dentalInsurance: [
         {
             id: '1',
             title: 'Tand 1',
@@ -83,7 +83,7 @@ export default {
             pricePerYear: 449.36
         }
     ],
-    geslacht: [
+    gender: [
         { id: 'man', title: 'Man' },
         { id: 'vrouw', title: 'Vrouw' }
     ]

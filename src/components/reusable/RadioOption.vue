@@ -4,7 +4,11 @@
             :id="id"
             :value="id"
             :checked="checked"
-            class="radio__input custom-control-input"
+            :class="[
+                'radio__input',
+                'custom-control-input',
+                { 'is-invalid': hasError }
+            ]"
             type="radio"
             :name="name"
             @change="handleChange"
@@ -28,6 +32,10 @@ export default {
             required: true
         },
         checked: {
+            type: Boolean,
+            default: false
+        },
+        hasError: {
             type: Boolean,
             default: false
         }

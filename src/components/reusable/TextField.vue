@@ -6,9 +6,9 @@
                 :class="[
                     'input__field',
                     'form-control',
-                    { 'is-invalid': !isValid }
+                    { 'is-invalid': hasError }
                 ]"
-                type="text"
+                :type="type"
                 :value="value"
                 @blur="handleBlur"
                 @focus="handleFocus"
@@ -16,7 +16,7 @@
             />
         </div>
         <div
-            v-if="!isValid"
+            v-if="hasError"
             class="input__feedback invalid-feedback mt-1"
             aria-live="polite"
         >
@@ -39,12 +39,18 @@ export default {
         },
         errorMessage: {
             type: String,
-            default:
-                'Helaas is de ingevoerde waarde niet geldig. Probeer het opnieuw.'
+            default: 'Dit veld is verplicht'
         },
-        isValid: {
+        hasError: {
             type: Boolean,
-            default: true
+            default: false
+        },
+        type: {
+            type: String,
+            default: 'text',
+            validator(value) {
+                return ['text', 'number'].includes(value);
+            }
         }
     },
     methods: {

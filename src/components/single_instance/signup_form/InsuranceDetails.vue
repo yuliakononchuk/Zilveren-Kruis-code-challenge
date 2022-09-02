@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <form @submit.prevent="handleSubmit">
         <h2 class="mt-5">Verzekering</h2>
         <form-group
             title="Basisverzekering"
@@ -12,16 +12,19 @@
                 <label class="input__title"> Kies uw basisverzekering </label>
                 <div class="form-row">
                     <radio-tile
-                        v-for="option in options.basisVerzekering"
-                        :checked="basisVerzekeringId === option.id"
+                        v-for="option in options.basicInsurance"
+                        :checked="basicInsuranceId === option.id"
                         :key="option.id"
                         :id="option.id"
                         :title="option.title"
-                        :price="`${formatCurrency(option.pricePerYear)} per ${
-                            betaalTermijn.name
-                        }`"
+                        :price="`${formatCurrency(
+                            adjustPriceToPeriod(
+                                option.pricePerYear,
+                                paymentPeriodId
+                            )
+                        )} per ${paymentPeriod.name}`"
                         name="radio-insurance"
-                        @radioTileChange="updateBasisVerzekering"
+                        @radioTileChange="updateBasicInsurance"
                     />
                 </div>
             </div>
@@ -29,24 +32,26 @@
         <form-group>
             <simple-select
                 title="Kies je betaaltermijn"
-                :value="betaalTermijnId"
-                :options="options.betaalTermijn"
-                @selectChange="updateBetaalTermijn"
+                :value="paymentPeriodId"
+                :options="options.paymentPeriod"
+                @selectChange="updatePaymentPeriod"
                 :has-placeholder="false"
+                :has-error="v$.paymentPeriodId.$error"
             />
         </form-group>
         <form-group title="Eigen risico">
             <simple-select
-                :value="eigenRisicoId"
-                :disabled="basisVerzekeringIdNotSelected"
+                :value="deductibleId"
+                :disabled="basicInsuranceIdNotSelected"
                 :placeholder="
-                    basisVerzekeringIdNotSelected
+                    basicInsuranceIdNotSelected
                         ? 'Kies eerst uw basisverzekering'
                         : 'Er is nog niets geselecteerd'
                 "
                 title="Kies de hoogste van het eigen risico"
-                :options="options.eigenRisico"
-                @selectChange="updateEigenRisico"
+                :options="options.deductible"
+                @selectChange="updateDeductible"
+                :has-error="v$.deductibleId.$error"
             />
         </form-group>
         <form-group
@@ -57,24 +62,26 @@
                 vergoeding verschilt per pakket"
         >
             <simple-select
-                :value="aanvullendeVerzekeringId"
+                :value="extraInsuranceId"
                 title="Kies uw aanvullende verzekering"
-                :options="generateOptions(options.aanvullendeVerzekering)"
-                @selectChange="updateAanvullendeVerzekering"
+                :options="generateOptions(options.extraInsurance)"
+                @selectChange="updateExtraInsurance"
                 placeholder="Geen aanvullende verzekering geselecteerd"
+                :has-error="v$.extraInsuranceId.$error"
             />
         </form-group>
         <form-group>
             <simple-select
-                :value="tandartsVerzekeringId"
+                :value="dentalInsuranceId"
                 title="Kies uw tandartsverzekering"
-                :options="generateOptions(options.tandartsVerzekering)"
-                @selectChange="updateTandartsVerzekering"
+                :options="generateOptions(options.dentalInsurance)"
+                @selectChange="updateDentalInsurance"
                 placeholder="Geen tandartsverzekering geselecteerd"
+                :has-error="v$.dentalInsuranceId.$error"
             />
         </form-group>
-        <router-link to="/controle"> Ge verder naar Controle </router-link>
-    </section>
+        <button type="submit">Ga verder naar Controle</button>
+    </form>
 </template>
 
 <script>
@@ -83,10 +90,23 @@ import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioTile from '@/components/reusable/RadioTile.vue';
 import options from '@/constants/options.js';
 import formatCurrency from '@/helpers/format_currency.js';
+import adjustPriceToPeriod from '@/helpers/adjust_price_to_period.js';
 import { mapState, mapGetters, mapMutations } from 'vuex';
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
 
 export default {
     name: 'InsuranceDetails',
+    setup: () => ({ v$: useVuelidate() }),
+    validations() {
+        return {
+            basicInsuranceId: { required },
+            paymentPeriodId: { required },
+            deductibleId: { required },
+            extraInsuranceId: { required },
+            dentalInsuranceId: { required }
+        };
+    },
     components: {
         SimpleSelect,
         FormGroup,
@@ -97,33 +117,46 @@ export default {
             return options;
         },
         ...mapState([
-            'basisVerzekeringId',
-            'betaalTermijnId',
-            'eigenRisicoId',
-            'aanvullendeVerzekeringId',
-            'tandartsVerzekeringId'
+            'basicInsuranceId',
+            'paymentPeriodId',
+            'deductibleId',
+            'extraInsuranceId',
+            'dentalInsuranceId'
         ]),
-        ...mapGetters(['basisVerzekeringIdNotSelected', 'betaalTermijn'])
+        ...mapGetters(['basicInsuranceIdNotSelected', 'paymentPeriod'])
     },
     methods: {
         generateOptions(options) {
             return options.map(option => {
                 const { id } = option;
                 const title = `${option.title} - ${formatCurrency(
-                    option.pricePerYear
-                )} per ${this.betaalTermijn.name}`;
+                    adjustPriceToPeriod(
+                        option.pricePerYear,
+                        this.paymentPeriodId
+                    )
+                )} per ${this.paymentPeriod.name}`;
                 return { id, title };
             });
         },
         formatCurrency(curr) {
             return formatCurrency(curr);
         },
+        adjustPriceToPeriod(pricePerYear, periodId) {
+            return adjustPriceToPeriod(pricePerYear, periodId);
+        },
+        async handleSubmit() {
+            const result = await this.v$.$validate();
+            if (!result) {
+                return;
+            }
+            this.$router.push('/controle');
+        },
         ...mapMutations([
-            'updateBasisVerzekering',
-            'updateBetaalTermijn',
-            'updateEigenRisico',
-            'updateAanvullendeVerzekering',
-            'updateTandartsVerzekering'
+            'updateBasicInsurance',
+            'updatePaymentPeriod',
+            'updateDeductible',
+            'updateExtraInsurance',
+            'updateDentalInsurance'
         ])
     }
 };

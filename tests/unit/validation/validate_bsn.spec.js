@@ -7,16 +7,18 @@ const too_short_bsn = correct_bsn_with_zero_end.slice(
     0,
     correct_bsn_with_zero_end.length - 1
 );
+const too_long_bsn = `${correct_bsn_with_zero_end}0`;
+const bsn_with_wrong_number = `${too_short_bsn}1`;
 
 describe('bsn_validator', () => {
     it("doesn't pass validation for a too short bsn", () => {
         expect(validate_bsn(too_short_bsn)).toBe(false);
     });
     it("doesn't pass validation for a too long bsn", () => {
-        expect(validate_bsn(`${correct_bsn_with_zero_end}0`)).toBe(false);
+        expect(validate_bsn(too_long_bsn)).toBe(false);
     });
     it("doesn't pass validation for a bsn not matching elftal", () => {
-        expect(validate_bsn(`${too_short_bsn}1`)).toBe(false);
+        expect(validate_bsn(bsn_with_wrong_number)).toBe(false);
     });
     it('passes validation for a correct bsn', () => {
         expect(validate_bsn(correct_bsn_with_zero_end)).toBe(true);

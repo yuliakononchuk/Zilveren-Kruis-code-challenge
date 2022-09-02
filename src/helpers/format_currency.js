@@ -4,4 +4,4 @@ export default function formatCurrency(price) {
         currency: 'EUR'
     });
     return formatter.format(price);
-};
+}

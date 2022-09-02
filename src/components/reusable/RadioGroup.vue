@@ -9,6 +9,7 @@
                     :id="option.id"
                     :name="name"
                     :checked="value === option.id"
+                    :has-error="hasError"
                     @optionChange="handleChange"
                 >
                     {{ option.title }}
@@ -42,6 +43,10 @@ export default {
         options: {
             type: Array,
             required: true
+        },
+        hasError: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {

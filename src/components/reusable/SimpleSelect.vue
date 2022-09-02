@@ -6,7 +6,7 @@
         <div class="input__group">
             <select
                 :disabled="disabled"
-                class="form-control"
+                :class="['form-control', { 'is-invalid': hasError }]"
                 @change="handleChange"
                 :value="value"
             >
@@ -24,6 +24,13 @@
                     :title="option.title"
                 />
             </select>
+            <div
+                v-if="hasError"
+                class="input__feedback invalid-feedback mt-1"
+                aria-live="polite"
+            >
+                <span>{{ errorMessage }}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -59,6 +66,14 @@ export default {
         disabled: {
             type: Boolean,
             default: false
+        },
+        hasError: {
+            type: Boolean,
+            default: false
+        },
+        errorMessage: {
+            type: String,
+            default: 'Kies een optie'
         }
     },
     methods: {

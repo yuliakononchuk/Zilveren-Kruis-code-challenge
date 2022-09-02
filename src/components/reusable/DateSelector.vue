@@ -4,12 +4,23 @@
             <label class="input__title"> {{ title }} </label>
             <input
                 :value="value"
-                class="input__field form-control"
+                :class="[
+                    'input__field',
+                    'form-control',
+                    { 'is-invalid': hasError }
+                ]"
                 type="date"
                 :min="minDate"
                 :max="maxDate"
                 @change="handleChange"
             />
+            <div
+                v-if="hasError"
+                class="input__feedback invalid-feedback mt-1"
+                aria-live="polite"
+            >
+                <span>{{ errorMessage }}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -33,6 +44,14 @@ export default {
         maxDate: {
             type: String,
             default: ''
+        },
+        errorMessage: {
+            type: String,
+            default: 'Kies een datum'
+        },
+        hasError: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
