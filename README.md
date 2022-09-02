@@ -12,10 +12,19 @@
 
 ## Wat is er nog te doen
 
--   Wat styling (bijvoorbeeld van een ‘Ga verder…’ button)
+-   Meer styling (bijvoorbeeld van een ‘Ga verder…’ button)
 -   Meer unit en integratie tests (vooraal voor componenten)
+-   Betere constants en types (+ bij voorkeur Typescript in plaats van Javascript)
 -   Meer validaties voor formulier velden (bijvoorbeeld naam/achternaam minimaal en maximaal lengte, geboortedatum min/max, ...), validatie on blur om snelle feedback te geven)
 -   Meer elementen op de pagina’s die wel op Figma designs zijn
+
+## Enkele aannames
+
+-   De formulier is een deel van een grotere app
+-   Javascript (niet Typescript) is de taal die bij ZilverenKruis wordt gebruikt
+-   Code is in Engels, alleen user-facing content is in Nederlands
+
+---
 
 # Zilveren Kruis code challenge
 

@@ -1,4 +1,4 @@
-import validate_bsn from '@/validation/validate_bsn.js';
+import validateBSN from '@/validation/validate_bsn.js';
 
 const correct_bsn_with_zero_end = '383155800';
 const correct_bsn_with_zero_start = '009078496';
@@ -10,19 +10,19 @@ const too_short_bsn = correct_bsn_with_zero_end.slice(
 const too_long_bsn = `${correct_bsn_with_zero_end}0`;
 const bsn_with_wrong_number = `${too_short_bsn}1`;
 
-describe('bsn_validator', () => {
+describe('validateBSN', () => {
     it("doesn't pass validation for a too short bsn", () => {
-        expect(validate_bsn(too_short_bsn)).toBe(false);
+        expect(validateBSN(too_short_bsn)).toBe(false);
     });
     it("doesn't pass validation for a too long bsn", () => {
-        expect(validate_bsn(too_long_bsn)).toBe(false);
+        expect(validateBSN(too_long_bsn)).toBe(false);
     });
     it("doesn't pass validation for a bsn not matching elftal", () => {
-        expect(validate_bsn(bsn_with_wrong_number)).toBe(false);
+        expect(validateBSN(bsn_with_wrong_number)).toBe(false);
     });
     it('passes validation for a correct bsn', () => {
-        expect(validate_bsn(correct_bsn_with_zero_end)).toBe(true);
-        expect(validate_bsn(correct_bsn_with_zero_start)).toBe(true);
-        expect(validate_bsn(correct_bsn_random)).toBe(true);
+        expect(validateBSN(correct_bsn_with_zero_end)).toBe(true);
+        expect(validateBSN(correct_bsn_with_zero_start)).toBe(true);
+        expect(validateBSN(correct_bsn_random)).toBe(true);
     });
 });

@@ -1,3 +1,5 @@
+import { PERIODS } from '@/constants/enums.js';
+
 export default {
     purposeOfRequest: [
         {
@@ -22,9 +24,9 @@ export default {
         }
     ],
     paymentPeriod: [
-        { id: 'maand', name: 'maand', title: 'per maand' },
-        { id: 'kwartaal', name: 'kwartaal', title: 'per kwartaal' },
-        { id: 'jaar', name: 'jaar', title: 'per jaar' }
+        { id: PERIODS.maand, name: 'maand', title: 'per maand' },
+        { id: PERIODS.kwartaal, name: 'kwartaal', title: 'per kwartaal' },
+        { id: PERIODS.jaar, name: 'jaar', title: 'per jaar' }
     ],
     basicInsurance: [
         {

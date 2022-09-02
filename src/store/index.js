@@ -3,7 +3,6 @@ import Vuex from 'vuex';
 import formatDate from '@/helpers/format_date.js';
 import formatName from '@/helpers/format_name.js';
 import formatFullName from '@/helpers/format_full_name.js';
-import formatBSN from '@/helpers/format_bsn.js';
 import options from '@/constants/options';
 
 Vue.use(Vuex);
@@ -87,7 +86,7 @@ export default new Vuex.Store({
             state.purposeOfRequestId = value;
         },
         updateBSN(state, value) {
-            state.bsn = formatBSN(value);
+            state.bsn = value;
         },
         updateName(state, value) {
             state.name = formatName(value);
