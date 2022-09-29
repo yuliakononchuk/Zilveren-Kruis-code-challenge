@@ -1,8 +1,7 @@
-export default function formatCurrency(price) {
+export default function formatCurrency(price: number): string {
     const formatter = Intl.NumberFormat('nl-NL', {
         style: 'currency',
         currency: 'EUR'
     });
     return formatter.format(price);
 }
-//# sourceMappingURL=format_currency.js.map

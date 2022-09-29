@@ -1,5 +1,31 @@
 import { PERIODS } from '@/constants/enums';
-const options = {
+
+export interface OptionSimple {
+    id: string;
+    title: string;
+    name?: string;
+    hasBadge?: boolean;
+}
+
+export interface OptionWithPrice extends Partial<OptionSimple> {
+    pricePerYear: number;
+}
+
+export interface OptionWithDeductible extends Partial<OptionSimple> {
+    deductible: number;
+}
+
+export interface OptionsObject {
+    purposeOfRequest: OptionSimple[];
+    deductible: OptionWithDeductible[];
+    paymentPeriod: OptionSimple[];
+    basicInsurance: OptionWithPrice[];
+    extraInsurance: OptionWithPrice[];
+    dentalInsurance: OptionWithPrice[];
+    gender: OptionSimple[];
+}
+
+const options: OptionsObject = {
     purposeOfRequest: [
         {
             id: 'nieuw',
@@ -89,5 +115,5 @@ const options = {
         { id: 'vrouw', title: 'Vrouw' }
     ]
 };
+
 export default options;
-//# sourceMappingURL=options.js.map

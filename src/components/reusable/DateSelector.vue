@@ -25,7 +25,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: 'DateSelector',
     props: {
@@ -55,8 +55,9 @@ export default {
         }
     },
     methods: {
-        handleChange(e) {
-            this.$emit('dateChange', e.target.value);
+        handleChange(e: Event): void {
+            const target = e.target as HTMLInputElement;
+            this.$emit('dateChange', target.value);
         }
     }
 };

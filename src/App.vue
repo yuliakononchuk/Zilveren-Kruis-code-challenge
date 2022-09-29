@@ -22,7 +22,7 @@
 import PageHeader from '@/components/single_instance/PageHeader.vue';
 import PageFooter from '@/components/single_instance/PageFooter.vue';
 import ContactCard from '@/components/single_instance/ContactCard.vue';
-import options from '@/constants/options.js';
+import options from '@/constants/options';
 
 export default {
     name: 'App',

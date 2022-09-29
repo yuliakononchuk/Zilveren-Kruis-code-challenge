@@ -1,5 +1,9 @@
 import { PERIODS } from '@/constants/enums';
-export default function adjustPriceToPeriod(pricePerYear, periodId) {
+
+export default function adjustPriceToPeriod(
+    pricePerYear: number,
+    periodId: PERIODS
+): number {
     if (!PERIODS[periodId]) {
         throw new Error('Please select valid period');
     }
@@ -11,4 +15,3 @@ export default function adjustPriceToPeriod(pricePerYear, periodId) {
     }
     return pricePerYear;
 }
-//# sourceMappingURL=adjust_price_to_period.js.map

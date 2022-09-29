@@ -63,14 +63,14 @@
     </form>
 </template>
 
-<script>
+<script lang="ts">
 import TextField from '@/components/reusable/TextField.vue';
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import DateSelector from '@/components/reusable/DateSelector.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioGroup from '@/components/reusable/RadioGroup.vue';
-import options from '@/constants/options.js';
-import validateBSN from '@/validation/validate_bsn.js';
+import options, { OptionsObject } from '@/constants/options';
+import validateBSN from '@/validation/validate_bsn';
 import { mapState, mapMutations } from 'vuex';
 import { useVuelidate } from '@vuelidate/core';
 import { helpers, required } from '@vuelidate/validators';
@@ -101,10 +101,10 @@ export default {
         RadioGroup
     },
     computed: {
-        options() {
+        options(): OptionsObject {
             return options;
         },
-        dateToday() {
+        dateToday(): string {
             const today = new Date();
             return today.toISOString().split('T')[0];
         },
@@ -119,15 +119,15 @@ export default {
         ])
     },
     methods: {
-        updateBSNAndClearValidation(bsn) {
+        updateBSNAndClearValidation(bsn: string): void {
             this.updateBSN(bsn);
-            this.v$.bsn.$reset();
+            this.$v.bsn.$reset();
         },
-        validateBSN() {
-            this.v$.bsn.$touch();
+        validateBSN(): void {
+            this.$v.bsn.$touch();
         },
-        async handleSubmit() {
-            const result = await this.v$.$validate();
+        async handleSubmit(): Promise<void> {
+            const result = await this.$v.$validate();
             if (!result) {
                 return;
             }

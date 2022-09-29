@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import SelectOption from '@/components/reusable/SelectOption.vue';
 
 export default {
@@ -77,8 +77,9 @@ export default {
         }
     },
     methods: {
-        handleChange(e) {
-            this.$emit('selectChange', e.target.value);
+        handleChange(e: Event): void {
+            const target = e.target as HTMLInputElement;
+            this.$emit('selectChange', target.value);
         }
     }
 };

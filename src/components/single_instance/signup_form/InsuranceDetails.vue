@@ -84,13 +84,18 @@
     </form>
 </template>
 
-<script>
+<script lang="ts">
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioTile from '@/components/reusable/RadioTile.vue';
-import options from '@/constants/options.js';
-import formatCurrency from '@/helpers/format_currency.js';
-import adjustPriceToPeriod from '@/helpers/adjust_price_to_period.js';
+import options, {
+    OptionSimple,
+    OptionWithPrice,
+    OptionsObject
+} from '@/constants/options';
+import { PERIODS } from '@/constants/enums';
+import formatCurrency from '@/helpers/format_currency';
+import adjustPriceToPeriod from '@/helpers/adjust_price_to_period';
 import { mapState, mapGetters, mapMutations } from 'vuex';
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
@@ -113,7 +118,7 @@ export default {
         RadioTile
     },
     computed: {
-        options() {
+        options(): OptionsObject {
             return options;
         },
         ...mapState([
@@ -126,9 +131,9 @@ export default {
         ...mapGetters(['basicInsuranceIdNotSelected', 'paymentPeriod'])
     },
     methods: {
-        generateOptions(options) {
+        generateOptions(options: OptionWithPrice[]): OptionSimple[] {
             return options.map(option => {
-                const { id } = option;
+                const id = option.id!;
                 const title = `${option.title} - ${formatCurrency(
                     adjustPriceToPeriod(
                         option.pricePerYear,
@@ -138,14 +143,14 @@ export default {
                 return { id, title };
             });
         },
-        formatCurrency(curr) {
+        formatCurrency(curr: number): string {
             return formatCurrency(curr);
         },
-        adjustPriceToPeriod(pricePerYear, periodId) {
+        adjustPriceToPeriod(pricePerYear: number, periodId: PERIODS): number {
             return adjustPriceToPeriod(pricePerYear, periodId);
         },
-        async handleSubmit() {
-            const result = await this.v$.$validate();
+        async handleSubmit(): Promise<void> {
+            const result = await this.$v.$validate();
             if (!result) {
                 return;
             }

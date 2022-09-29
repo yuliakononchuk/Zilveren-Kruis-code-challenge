@@ -19,7 +19,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import RadioOption from '@/components/reusable/RadioOption.vue';
 
 export default {
@@ -50,7 +50,7 @@ export default {
         }
     },
     methods: {
-        handleChange(value) {
+        handleChange(value: string): void {
             this.$emit('radioChange', value);
         }
     }

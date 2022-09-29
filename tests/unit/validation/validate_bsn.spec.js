@@ -1,4 +1,4 @@
-import validateBSN from '@/validation/validate_bsn.js';
+import validateBSN from '@/validation/validate_bsn';
 
 const correct_bsn_with_zero_end = '383155800';
 const correct_bsn_with_zero_start = '009078496';

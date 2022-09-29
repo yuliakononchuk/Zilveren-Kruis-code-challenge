@@ -6,10 +6,11 @@ module.exports = {
     extends: [
         'plugin:vue/essential',
         'eslint:recommended',
-        'plugin:prettier/recommended'
+        'plugin:prettier/recommended',
+        '@vue/typescript'
     ],
     parserOptions: {
-        parser: '@babel/eslint-parser'
+        parser: '@typescript-eslint/parser'
     },
     rules: {
         'vue/no-template-target-blank': 2,
@@ -30,5 +31,5 @@ module.exports = {
                 jest: true
             }
         }
-    ]
+    ],
 };

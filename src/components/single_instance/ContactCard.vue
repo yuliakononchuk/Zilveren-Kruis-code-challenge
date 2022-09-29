@@ -20,7 +20,7 @@
     </info-card>
 </template>
 
-<script>
+<script lang="ts">
 import InfoCard from '@/components/reusable/InfoCard.vue';
 
 export default {

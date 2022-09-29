@@ -25,7 +25,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: 'TextField',
     props: {
@@ -48,20 +48,23 @@ export default {
         type: {
             type: String,
             default: 'text',
-            validator(value) {
+            validator(value: string): boolean {
                 return ['text', 'number'].includes(value);
             }
         }
     },
     methods: {
-        handleBlur(e) {
-            this.$emit('textFieldBlur', e.target.value);
+        handleBlur(e: Event): void {
+            const target = e.target as HTMLInputElement;
+            this.$emit('textFieldBlur', target.value);
         },
-        handleFocus(e) {
-            this.$emit('textFieldFocus', e.target.value);
+        handleFocus(e: Event): void {
+            const target = e.target as HTMLInputElement;
+            this.$emit('textFieldFocus', target.value);
         },
-        handleChange(e) {
-            this.$emit('textFieldChange', e.target.value);
+        handleChange(e: Event): void {
+            const target = e.target as HTMLInputElement;
+            this.$emit('textFieldChange', target.value);
         }
     }
 };

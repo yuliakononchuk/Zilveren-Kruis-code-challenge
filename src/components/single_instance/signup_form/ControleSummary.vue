@@ -77,9 +77,9 @@
     </section>
 </template>
 
-<script>
+<script lang="ts">
 import InfoCard from '@/components/reusable/InfoCard.vue';
-import formatCurrency from '@/helpers/format_currency.js';
+import formatCurrency from '@/helpers/format_currency';
 import { mapState, mapGetters } from 'vuex';
 
 export default {
@@ -99,7 +99,7 @@ export default {
         ])
     },
     methods: {
-        formatCurrency(curr) {
+        formatCurrency(curr: number) {
             return formatCurrency(curr);
         }
     },
