@@ -4,39 +4,47 @@ import formatDate from '@/helpers/format_date';
 import formatName from '@/helpers/format_name';
 import formatFullName from '@/helpers/format_full_name';
 import options from '@/constants/options';
-import { PERIODS } from '@/constants/enums';
+import {
+    Periods,
+    PurposeOfRequest,
+    Deductible,
+    BasicInsurance,
+    ExtraInsurance,
+    DenalInsurance,
+    Gender
+} from '@/constants/enums';
 
 Vue.use(Vuex);
 
 export interface State {
-    purposeOfRequestId: string;
+    purposeOfRequestId: PurposeOfRequest;
     name: string;
     tussenvoegsels: string;
     surname: string;
-    genderId: string;
+    genderId: Gender;
     dateOfBirth: string;
     bsn: string;
-    basicInsuranceId: string;
-    paymentPeriodId: PERIODS;
-    deductibleId: string;
-    extraInsuranceId: string;
-    dentalInsuranceId: string;
+    basicInsuranceId: BasicInsurance;
+    paymentPeriodId: Periods;
+    deductibleId: Deductible;
+    extraInsuranceId: ExtraInsurance;
+    dentalInsuranceId: DenalInsurance;
 }
 
 export default new Vuex.Store({
     state: {
-        purposeOfRequestId: '',
+        purposeOfRequestId: PurposeOfRequest.geen,
         name: '',
         tussenvoegsels: '',
         surname: '',
-        genderId: '',
+        genderId: Gender.geen,
         dateOfBirth: '',
         bsn: '',
-        basicInsuranceId: '',
-        paymentPeriodId: PERIODS.jaar,
-        deductibleId: '',
-        extraInsuranceId: '',
-        dentalInsuranceId: ''
+        basicInsuranceId: BasicInsurance.geen,
+        paymentPeriodId: Periods.jaar,
+        deductibleId: Deductible.geen,
+        extraInsuranceId: ExtraInsurance.geen,
+        dentalInsuranceId: DenalInsurance.geen
     } as State,
 
     getters: {
@@ -98,7 +106,7 @@ export default new Vuex.Store({
     },
 
     mutations: {
-        updatePurposeOfRequestId(state, value: string) {
+        updatePurposeOfRequestId(state, value: PurposeOfRequest) {
             state.purposeOfRequestId = value;
         },
         updateBSN(state, value: string) {
@@ -113,25 +121,25 @@ export default new Vuex.Store({
         updateSurname(state, value: string) {
             state.surname = formatName(value);
         },
-        updateGender(state, value: string) {
+        updateGender(state, value: Gender) {
             state.genderId = value;
         },
         updateDateOfBirth(state, value: string) {
             state.dateOfBirth = value;
         },
-        updateBasicInsurance(state, value: string) {
+        updateBasicInsurance(state, value: BasicInsurance) {
             state.basicInsuranceId = value;
         },
-        updatePaymentPeriod(state, value: PERIODS) {
+        updatePaymentPeriod(state, value: Periods) {
             state.paymentPeriodId = value;
         },
-        updateDeductible(state, value: string) {
+        updateDeductible(state, value: Deductible) {
             state.deductibleId = value;
         },
-        updateExtraInsurance(state, value: string) {
+        updateExtraInsurance(state, value: ExtraInsurance) {
             state.extraInsuranceId = value;
         },
-        updateDentalInsurance(state, value: string) {
+        updateDentalInsurance(state, value: DenalInsurance) {
             state.dentalInsuranceId = value;
         }
     }

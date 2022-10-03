@@ -77,7 +77,9 @@ import { helpers, required } from '@vuelidate/validators';
 
 export default {
     name: 'PersonalDetails',
-    setup: () => ({ v$: useVuelidate() }),
+    setup() {
+        return { v$: useVuelidate() as any };
+    },
     validations() {
         return {
             purposeOfRequestId: { required },
@@ -120,16 +122,13 @@ export default {
     },
     methods: {
         updateBSNAndClearValidation(bsn: string): void {
-            console.warn('updateBSNAndClearValidation', this.v$);
             this.updateBSN(bsn);
             this.v$.bsn.$reset();
         },
         validateBSN(): void {
-            console.warn('validateBSN', this.v$);
             this.v$.bsn.$touch();
         },
         async handleSubmit(): Promise<void> {
-            console.warn(this.v$);
             const validationPassed = await this.v$.$validate();
             if (!validationPassed) {
                 return;

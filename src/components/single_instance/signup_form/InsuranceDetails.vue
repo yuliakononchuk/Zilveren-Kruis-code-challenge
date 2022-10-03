@@ -85,6 +85,7 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
 import SimpleSelect from '@/components/reusable/SimpleSelect.vue';
 import FormGroup from '@/components/reusable/FormGroup.vue';
 import RadioTile from '@/components/reusable/RadioTile.vue';
@@ -93,16 +94,18 @@ import options, {
     OptionWithPrice,
     OptionsObject
 } from '@/constants/options';
-import { PERIODS } from '@/constants/enums';
+import { Periods } from '@/constants/enums';
 import formatCurrency from '@/helpers/format_currency';
 import adjustPriceToPeriod from '@/helpers/adjust_price_to_period';
 import { mapState, mapGetters, mapMutations } from 'vuex';
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
 
-export default {
+export default Vue.extend({
     name: 'InsuranceDetails',
-    setup: () => ({ v$: useVuelidate() }),
+    setup() {
+        return { v$: useVuelidate() as any };
+    },
     validations() {
         return {
             basicInsuranceId: { required },
@@ -146,7 +149,7 @@ export default {
         formatCurrency(curr: number): string {
             return formatCurrency(curr);
         },
-        adjustPriceToPeriod(pricePerYear: number, periodId: PERIODS): number {
+        adjustPriceToPeriod(pricePerYear: number, periodId: Periods): number {
             return adjustPriceToPeriod(pricePerYear, periodId);
         },
         async handleSubmit(): Promise<void> {
@@ -164,7 +167,7 @@ export default {
             'updateDentalInsurance'
         ])
     }
-};
+});
 </script>
 
 <style lang="scss"></style>
