@@ -120,15 +120,18 @@ export default {
     },
     methods: {
         updateBSNAndClearValidation(bsn: string): void {
+            console.warn('updateBSNAndClearValidation', this.v$);
             this.updateBSN(bsn);
-            this.$v.bsn.$reset();
+            this.v$.bsn.$reset();
         },
         validateBSN(): void {
-            this.$v.bsn.$touch();
+            console.warn('validateBSN', this.v$);
+            this.v$.bsn.$touch();
         },
         async handleSubmit(): Promise<void> {
-            const result = await this.$v.$validate();
-            if (!result) {
+            console.warn(this.v$);
+            const validationPassed = await this.v$.$validate();
+            if (!validationPassed) {
                 return;
             }
             this.$router.push('/verzekering');

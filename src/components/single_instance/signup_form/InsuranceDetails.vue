@@ -150,8 +150,8 @@ export default {
             return adjustPriceToPeriod(pricePerYear, periodId);
         },
         async handleSubmit(): Promise<void> {
-            const result = await this.$v.$validate();
-            if (!result) {
+            const validationPassed = await this.v$.$validate();
+            if (!validationPassed) {
                 return;
             }
             this.$router.push('/controle');
