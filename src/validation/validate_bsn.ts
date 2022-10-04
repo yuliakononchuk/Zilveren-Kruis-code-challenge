@@ -1,4 +1,4 @@
-export default function validateBSN(bsn) {
+export default function validateBSN(bsn: number): boolean {
     const bsnString = bsn.toString();
     if (bsnString.length != 9) {
         return false;
