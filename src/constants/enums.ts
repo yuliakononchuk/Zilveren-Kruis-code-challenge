@@ -31,7 +31,7 @@ export enum ExtraInsurance {
     geen = ''
 }
 
-export enum DenalInsurance {
+export enum DentalInsurance {
     tand1 = 'tand1',
     tand2 = 'tand2',
     tand3 = 'tand3',

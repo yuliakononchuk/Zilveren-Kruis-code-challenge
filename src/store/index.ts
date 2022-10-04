@@ -10,7 +10,7 @@ import {
     Deductible,
     BasicInsurance,
     ExtraInsurance,
-    DenalInsurance,
+    DentalInsurance,
     Gender
 } from '@/constants/enums';
 
@@ -28,7 +28,7 @@ export interface State {
     paymentPeriodId: Periods;
     deductibleId: Deductible;
     extraInsuranceId: ExtraInsurance;
-    dentalInsuranceId: DenalInsurance;
+    dentalInsuranceId: DentalInsurance;
 }
 
 export default new Vuex.Store({
@@ -44,7 +44,7 @@ export default new Vuex.Store({
         paymentPeriodId: Periods.jaar,
         deductibleId: Deductible.geen,
         extraInsuranceId: ExtraInsurance.geen,
-        dentalInsuranceId: DenalInsurance.geen
+        dentalInsuranceId: DentalInsurance.geen
     } as State,
 
     getters: {
@@ -139,7 +139,7 @@ export default new Vuex.Store({
         updateExtraInsurance(state, value: ExtraInsurance) {
             state.extraInsuranceId = value;
         },
-        updateDentalInsurance(state, value: DenalInsurance) {
+        updateDentalInsurance(state, value: DentalInsurance) {
             state.dentalInsuranceId = value;
         }
     }

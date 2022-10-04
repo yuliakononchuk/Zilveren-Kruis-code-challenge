@@ -4,7 +4,7 @@ import {
     Deductible,
     BasicInsurance,
     ExtraInsurance,
-    DenalInsurance,
+    DentalInsurance,
     Gender
 } from '@/constants/enums';
 
@@ -103,17 +103,17 @@ const options: OptionsObject = {
     ],
     dentalInsurance: [
         {
-            id: DenalInsurance.tand1,
+            id: DentalInsurance.tand1,
             title: 'Tand 1',
             pricePerYear: 80.28
         },
         {
-            id: DenalInsurance.tand2,
+            id: DentalInsurance.tand2,
             title: 'Tand 2',
             pricePerYear: 221.65
         },
         {
-            id: DenalInsurance.tand3,
+            id: DentalInsurance.tand3,
             title: 'Tand 3',
             pricePerYear: 449.36
         }
